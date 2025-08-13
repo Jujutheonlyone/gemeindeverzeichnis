@@ -3,7 +3,7 @@ import { getLatestDownloadLink } from './discover-latest';
 import { downloadZip } from './download';
 import { unzip } from './unzip';
 import {parseGv100adTxt} from "./parse-gv100ad";
-import {saveMunicipalities} from "./save-to-db";
+import {normalizeFromStaging, saveMunicipalities, saveStagingJson} from "./save-to-db";
 
 async function main() {
     try {
@@ -18,12 +18,13 @@ async function main() {
         const extractedFile = unzip(zipPath, '.tmp');
         console.log('  entpackte Datei:', extractedFile);
 
-        const gvRecords = parseGv100adTxt(extractedFile);
-        console.log('gvRecords.length', gvRecords.length);
+        const records = parseGv100adTxt(extractedFile);
 
-        console.log(`> Speichere ${gvRecords.length} Datensätze in Postgres ...`);
+        console.log(`> Speichere ${records.length} Datensätze in Postgres ...`);
 
-        await saveMunicipalities(gvRecords, 1000);
+        await saveStagingJson(records);
+        await normalizeFromStaging();         // 10/20/40/50 upserten
+        await saveMunicipalities(records, 1000);  // 60 upserten (hast du bereits)
 
     } catch (err) {
         console.error('Fehler im Importprozess:', err);
