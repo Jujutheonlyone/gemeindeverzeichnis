@@ -108,7 +108,6 @@ export async function normalizeFromStaging() {
     await qr.startTransaction();
 
     try {
-        // 10: Länder (ars2 = left(ars,2)) — robust: aus allen Satzarten "säen", Name aus 10 wenn vorhanden
         await qr.query(`
       insert into gv.state (ars2, name)
       select ars2, coalesce(max(name), 'L-' || ars2) as name
@@ -124,8 +123,6 @@ export async function normalizeFromStaging() {
       on conflict (ars2) do update
       set name = coalesce(excluded.name, gv.state.name)
     `);
-
-        // 20: Regierungsbezirke (ars3 = left(ars,3))
         await qr.query(`
             insert into gv.regbez (ars3, land_ars2, name)
             select distinct on (left(ars,3))
@@ -142,8 +139,6 @@ export async function normalizeFromStaging() {
                                       set land_ars2 = excluded.land_ars2,
                                       name      = excluded.name;
     `);
-
-        // 40: Kreise (ars5 = left(ars,5))
         await qr.query(`
             insert into gv.kreis (ars5, regbez_ars3, land_ars2, name, sitz, textkennzeichen)
             select distinct on (left(ars,5))
@@ -161,37 +156,10 @@ export async function normalizeFromStaging() {
                                       land_ars2   = excluded.land_ars2,
                                       name        = excluded.name,
                                       sitz        = excluded.sitz,
-                                      textkennzeichen = excluded.textkennzeichen;
-    `);
-
-        // 50: Gemeindeverbände (ars4 = left(ars,4))
-        await qr.query(`
-            with v as (
-                select distinct on (left(ars,4))
-                left(ars,4) as ars4,
-                left(ars,5) as kreis5,
-                data->>'bezeichnung' as name,
-                coalesce(data->>'verwaltungssitz','') as sitz,
-                data->>'textkennzeichen' as textkennzeichen
-            from gv.staging_json
-            where satzart = '50' and ars is not null
-            order by left(ars,4), gebietsstand desc nulls last
-                )
-            insert into gv.verband (ars4, kreis_ars5, name, sitz, textkennzeichen)
-            select v.ars4,
-                   k.ars5 as kreis_ars5,          -- nur setzen, wenn der Kreis existiert; sonst NULL
-                   v.name,
-                   v.sitz,
-                   v.textkennzeichen
-            from v
-                     left join gv.kreis k on k.ars5 = v.kreis5
-                on conflict (ars4) do update
-                                          set kreis_ars5      = excluded.kreis_ars5,
-                                          name            = excluded.name,
-                                          sitz            = excluded.sitz,
-                                          textkennzeichen = excluded.textkennzeichen;
-    `);
-
+                                      textkennzeichen = excluded.textkennzeichen
+        `);
+        await qr.query(`with v as (select distinct on (left(ars,4)) left(ars,4) as ars4, case when length(ars) >= 5 then left(ars,5) else left(ars,4) || '0' end as kreis5, left(ars,2) as land2 from gv.staging_json where satzart = '50' and ars is not null order by left(ars,4), gebietsstand desc nulls last) insert into gv.kreis (ars5, regbez_ars3, land_ars2, name, sitz, textkennzeichen) select kreis5, null, land2, 'Sonderkreis '||kreis5, '', null from v left join gv.kreis k on k.ars5 = v.kreis5 where k.ars5 is null on conflict (ars5) do nothing;`);
+        await qr.query(`with v as (select distinct on (left(ars,4)) left(ars,4) as ars4, case when length(ars) >= 5 then left(ars,5) else left(ars,4) || '0' end as kreis5, data->>'bezeichnung' as name, coalesce(data->>'verwaltungssitz','') as sitz, data->>'textkennzeichen' as textkennzeichen from gv.staging_json where satzart = '50' and ars is not null order by left(ars,4), gebietsstand desc nulls last) insert into gv.verband (ars4, kreis_ars5, name, sitz, textkennzeichen) select ars4, kreis5, name, sitz, textkennzeichen from v on conflict (ars4) do update set kreis_ars5 = excluded.kreis_ars5, name = excluded.name, sitz = excluded.sitz, textkennzeichen = excluded.textkennzeichen;`);
         await qr.commitTransaction();
     } catch (e) {
         await qr.rollbackTransaction();
