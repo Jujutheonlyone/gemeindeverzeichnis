@@ -1,0 +1,1657 @@
+<section class="dark:bg-background">
+  <div class="container mx-auto">
+    <div class="flex text-gray-400 text-sm items-center mb-4">
+      <a href="#" class="font-medium text-gray-700 dark:text-gray-200"
+        >Dashboard</a
+      >
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        class="w-3 h-3 mx-2"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke="currentColor"
+        stroke-width="2"
+      >
+        <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+      </svg>
+      <span>Add Listing</span>
+    </div>
+    <div class="bg-white shadow-front-2 dark:bg-foreground rounded-lg p-6 mb-7">
+      <h4 class="text-gray-700 dark:text-gray-300 text-xl font-semibold mb-7">
+        Basic Information
+      </h4>
+
+      <div class="grid lg:grid-cols-2 grid-cols-1 gap-7">
+        <div class="col-span-2">
+          <label
+            for=""
+            class="text-base text-gray-700 dark:text-gray-200 block mb-3"
+            >Listing Title <sup class="text-red-500">*</sup></label
+          >
+          <input
+            type="text"
+            class="border border-gray-200 dark:border-gray-800 dark:text-gray-300 rounded-lg px-4 dark:bg-foreground py-[15px] shadow-input hover:border hover:border-blue-200 focus:border-blue-200 focus:outline-none w-full mb-4"
+            placeholder="Type a title"
+          />
+        </div>
+        <div class="lg:col-span-1 col-span-2">
+          <label
+            for=""
+            class="text-base text-gray-700 dark:text-gray-200 block mb-3"
+            >Categories</label
+          >
+          <div class="relative mb-3">
+            <select
+              name="cars"
+              class="bg-white w-full border border-gray-200 dark:bg-foreground dark:border-gray-800 relative appearance-none rounded-lg px-4 py-[0.969rem] focus:outline-blue-300 text-gray-400 focus:outline-none"
+            >
+              <option value="volvo">Select a category</option>
+              <option value="saab">Saab</option>
+              <option value="mercedes">Mercedes</option>
+              <option value="audi">Audi</option>
+            </select>
+            <svg
+              width="10"
+              height="6"
+              class="w-3 h-3 text-gray-400 absolute right-3 top-1/2 -translate-y-1/2 z-10"
+              viewBox="0 0 10 6"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M4.99982 6.00001C4.79513 6.00001 4.59034 5.92467 4.43435 5.774L0.434558 1.91686C0.122074 1.61552 0.122074 1.12735 0.434558 0.826011C0.747042 0.524671 1.25327 0.524671 1.56575 0.826011L4.99982 4.13893L8.43464 0.826613C8.74713 0.525274 9.25335 0.525274 9.56583 0.826613C9.87832 1.12795 9.87832 1.61612 9.56583 1.91746L5.56604 5.7746C5.4098 5.92527 5.20481 6.00001 4.99982 6.00001Z"
+                fill="currentColor"
+              />
+            </svg>
+          </div>
+        </div>
+        <div class="lg:col-span-1 col-span-2">
+          <label
+            for=""
+            class="text-base text-gray-700 dark:text-gray-200 block mb-3"
+            >Listing Keyword/Tag (No more than 5) *
+            <sup class="text-red-500">*</sup></label
+          >
+          <input
+            type="text"
+            class="border border-gray-200 dark:border-gray-800 dark:text-gray-300 rounded-lg px-4 dark:bg-foreground py-[15px] shadow-input hover:border hover:border-blue-200 focus:border-blue-200 focus:outline-none w-full mb-4"
+            placeholder="e.g. Featured, Popular, Instant Booking"
+          />
+        </div>
+      </div>
+    </div>
+    <div class="bg-white shadow-front-2 dark:bg-foreground rounded-lg p-6 mb-7">
+      <h4 class="text-gray-700 dark:text-gray-300 text-xl font-semibold mb-7">
+        Locations
+      </h4>
+
+      <div class="grid lg:grid-cols-2 grid-cols-1 gap-7">
+        <div class="lg:col-span-1 col-span-2">
+          <label
+            for=""
+            class="text-base text-gray-700 dark:text-gray-200 block mb-3"
+            >Road or Street <sup class="text-red-500">*</sup></label
+          >
+          <input
+            type="text"
+            class="border border-gray-200 dark:border-gray-800 dark:text-gray-300 rounded-lg px-4 dark:bg-foreground py-[15px] shadow-input hover:border hover:border-blue-200 focus:border-blue-200 focus:outline-none w-full mb-4"
+            placeholder="e.g. 12 San Pedro Street"
+          />
+        </div>
+        <div class="lg:col-span-1 col-span-2">
+          <label
+            for=""
+            class="text-base text-gray-700 dark:text-gray-200 block mb-3"
+            >City or State</label
+          >
+          <div class="relative mb-3">
+            <select
+              name="cars"
+              class="bg-white w-full border border-gray-200 dark:bg-foreground dark:border-gray-800 relative appearance-none rounded-lg px-4 py-[0.969rem] focus:outline-blue-300 text-gray-400 focus:outline-none"
+            >
+              <option value="volvo">Select a City or State</option>
+              <option value="saab">Saab</option>
+              <option value="mercedes">Mercedes</option>
+              <option value="audi">Audi</option>
+            </select>
+            <svg
+              width="10"
+              height="6"
+              class="w-3 h-3 text-gray-400 absolute right-3 top-1/2 -translate-y-1/2 z-10"
+              viewBox="0 0 10 6"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M4.99982 6.00001C4.79513 6.00001 4.59034 5.92467 4.43435 5.774L0.434558 1.91686C0.122074 1.61552 0.122074 1.12735 0.434558 0.826011C0.747042 0.524671 1.25327 0.524671 1.56575 0.826011L4.99982 4.13893L8.43464 0.826613C8.74713 0.525274 9.25335 0.525274 9.56583 0.826613C9.87832 1.12795 9.87832 1.61612 9.56583 1.91746L5.56604 5.7746C5.4098 5.92527 5.20481 6.00001 4.99982 6.00001Z"
+                fill="currentColor"
+              />
+            </svg>
+          </div>
+        </div>
+        <div class="lg:col-span-1 col-span-2">
+          <label
+            for=""
+            class="text-base text-gray-700 dark:text-gray-200 block mb-3"
+            >Address <sup class="text-red-500">*</sup></label
+          >
+          <input
+            type="text"
+            class="border border-gray-200 dark:border-gray-800 dark:text-gray-300 rounded-lg px-4 dark:bg-foreground py-[15px] shadow-input hover:border hover:border-blue-200 focus:border-blue-200 focus:outline-none w-full mb-4"
+            placeholder="e.g. Bloosom"
+          />
+        </div>
+        <div class="lg:col-span-1 col-span-2">
+          <label
+            for=""
+            class="text-base text-gray-700 dark:text-gray-200 block mb-3"
+            >Zip Code</label
+          >
+          <input
+            type="text"
+            class="border border-gray-200 dark:border-gray-800 dark:text-gray-300 rounded-lg px-4 dark:bg-foreground py-[15px] shadow-input hover:border hover:border-blue-200 focus:border-blue-200 focus:outline-none w-full mb-4"
+            placeholder="e.g. ACB1258"
+          />
+        </div>
+      </div>
+    </div>
+    <div class="bg-white shadow-front-2 dark:bg-foreground rounded-lg p-6 mb-7">
+      <h4 class="text-gray-700 dark:text-gray-300 text-xl font-semibold mb-7">
+        Details
+      </h4>
+
+      <div class="grid lg:grid-cols-2 grid-cols-1 gap-7">
+        <div class="col-span-2">
+          <label
+            for=""
+            class="text-base text-gray-700 dark:text-gray-200 block mb-3"
+            >Descriptions <sup class="text-red-500">*</sup></label
+          >
+          <textarea
+            class="border border-gray-200 dark:border-gray-800 dark:text-gray-300 rounded-lg px-4 dark:bg-foreground py-[15px] shadow-input hover:border hover:border-blue-200 focus:border-blue-200 focus:outline-none w-full mb-4"
+            id="exampleFormControlTextarea1"
+            rows="10"
+            placeholder="Write your listing details here....."
+          ></textarea>
+        </div>
+        <div class="lg:col-span-1 col-span-2">
+          <label
+            for=""
+            class="text-base text-gray-700 dark:text-gray-200 block mb-3"
+            >Phone</label
+          >
+          <input
+            type="text"
+            class="border border-gray-200 dark:border-gray-800 dark:text-gray-300 rounded-lg px-4 dark:bg-foreground py-[15px] shadow-input hover:border hover:border-blue-200 focus:border-blue-200 focus:outline-none w-full mb-4"
+            placeholder="e.g. +1234567890"
+          />
+        </div>
+        <div class="lg:col-span-1 col-span-2">
+          <label
+            for=""
+            class="text-base text-gray-700 dark:text-gray-200 block mb-3"
+            >Email <sup class="text-red-500">*</sup></label
+          >
+          <input
+            type="text"
+            class="border border-gray-200 dark:border-gray-800 dark:text-gray-300 rounded-lg px-4 dark:bg-foreground py-[15px] shadow-input hover:border hover:border-blue-200 focus:border-blue-200 focus:outline-none w-full mb-4"
+            placeholder="e.g. info@accommo.com"
+          />
+        </div>
+        <div class="lg:col-span-1 col-span-2">
+          <label
+            for=""
+            class="text-base text-gray-700 dark:text-gray-200 block mb-3"
+            >website</label
+          >
+          <input
+            type="text"
+            class="border border-gray-200 dark:border-gray-800 dark:text-gray-300 rounded-lg px-4 dark:bg-foreground py-[15px] shadow-input hover:border hover:border-blue-200 focus:border-blue-200 focus:outline-none w-full mb-4"
+            placeholder="e.g. www.accommo.com"
+          />
+        </div>
+        <div class="lg:col-span-1 col-span-2">
+          <label
+            for=""
+            class="text-base text-gray-700 dark:text-gray-200 block mb-3"
+            >Facebook</label
+          >
+          <input
+            type="text"
+            class="border border-gray-200 dark:border-gray-800 dark:text-gray-300 rounded-lg px-4 dark:bg-foreground py-[15px] shadow-input hover:border hover:border-blue-200 focus:border-blue-200 focus:outline-none w-full mb-4"
+            placeholder="e.g. www.facebook/accommo.com"
+          />
+        </div>
+        <div class="lg:col-span-1 col-span-2">
+          <label
+            for=""
+            class="text-base text-gray-700 dark:text-gray-200 block mb-3"
+            >Linkedin</label
+          >
+          <input
+            type="text"
+            class="border border-gray-200 dark:border-gray-800 dark:text-gray-300 rounded-lg px-4 dark:bg-foreground py-[15px] shadow-input hover:border hover:border-blue-200 focus:border-blue-200 focus:outline-none w-full mb-4"
+            placeholder="e.g. www.linkedin/accommo.com"
+          />
+        </div>
+        <div class="lg:col-span-1 col-span-2">
+          <label
+            for=""
+            class="text-base text-gray-700 dark:text-gray-200 block mb-3"
+            >Youtube</label
+          >
+          <input
+            type="text"
+            class="border border-gray-200 dark:border-gray-800 dark:text-gray-300 rounded-lg px-4 dark:bg-foreground py-[15px] shadow-input hover:border hover:border-blue-200 focus:border-blue-200 focus:outline-none w-full mb-4"
+            placeholder="e.g. www.youtube/accommo.com"
+          />
+        </div>
+        <div class="lg:col-span-1 col-span-2">
+          <label
+            for=""
+            class="text-base text-gray-700 dark:text-gray-200 block mb-3"
+            >Twitter</label
+          >
+          <input
+            type="text"
+            class="border border-gray-200 dark:border-gray-800 dark:text-gray-300 rounded-lg px-4 dark:bg-foreground py-[15px] shadow-input hover:border hover:border-blue-200 focus:border-blue-200 focus:outline-none w-full mb-4"
+            placeholder="e.g. www.twitter/accommo.com"
+          />
+        </div>
+        <div class="lg:col-span-1 col-span-2">
+          <label
+            for=""
+            class="text-base text-gray-700 dark:text-gray-200 block mb-3"
+            >Dribbble</label
+          >
+          <input
+            type="text"
+            class="border border-gray-200 dark:border-gray-800 dark:text-gray-300 rounded-lg px-4 dark:bg-foreground py-[15px] shadow-input hover:border hover:border-blue-200 focus:border-blue-200 focus:outline-none w-full mb-4"
+            placeholder="e.g. www.dribbble/accommo.com"
+          />
+        </div>
+      </div>
+    </div>
+    <div class="bg-white shadow-front-2 dark:bg-foreground rounded-lg p-6 mb-7">
+      <h4 class="text-gray-700 dark:text-gray-300 text-xl font-semibold mb-7">
+        Pricing
+      </h4>
+
+      <div class="grid lg:grid-cols-2 grid-cols-1 gap-7">
+        <div class="lg:col-span-1 col-span-2">
+          <label
+            for=""
+            class="text-base text-gray-700 dark:text-gray-200 block mb-3"
+            >Previous Price (USD)</label
+          >
+          <input
+            type="text"
+            class="border border-gray-200 dark:border-gray-800 dark:text-gray-300 rounded-lg px-4 dark:bg-foreground py-[15px] shadow-input hover:border hover:border-blue-200 focus:border-blue-200 focus:outline-none w-full mb-4"
+            placeholder="e.g. $125.25"
+          />
+        </div>
+        <div class="lg:col-span-1 col-span-2">
+          <label
+            for=""
+            class="text-base text-gray-700 dark:text-gray-200 block mb-3"
+            >Price (USD)
+          </label>
+          <input
+            type="text"
+            class="border border-gray-200 dark:border-gray-800 dark:text-gray-300 rounded-lg px-4 dark:bg-foreground py-[15px] shadow-input hover:border hover:border-blue-200 focus:border-blue-200 focus:outline-none w-full mb-4"
+            placeholder="e.g. $110.50"
+          />
+        </div>
+      </div>
+    </div>
+    <div class="bg-white shadow-front-2 dark:bg-foreground rounded-lg p-6 mb-7">
+      <div class="flex justify-between items-center mb-7">
+        <h4 class="text-gray-700 dark:text-gray-300 text-xl font-semibold">
+          Tags/Keyword
+        </h4>
+
+        <!-- custom-checkbox  -->
+        <input type="checkbox" name="" class="custom-switch" />
+      </div>
+
+      <div
+        class="grid xl:grid-cols-6 lg:grid-cols-4 sm:grid-cols-2 grid-cols-1"
+      >
+        <div class="flex items-center mb-5">
+          <input
+            class="mr-2 w-4 h-4 cursor-pointer"
+            type="checkbox"
+            id="vehicle1"
+            name="vehicle1"
+            value="Bike"
+          />
+          <label
+            for="vehicle1"
+            class="cursor-pointer text-sm text-gray-700 dark:text-gray-400"
+          >
+            Best rental area</label
+          >
+        </div>
+        <div class="mb-5">
+          <input
+            class="mr-2 w-4 h-4 cursor-pointer"
+            type="checkbox"
+            id="vehicle1"
+            name="vehicle1"
+            value="Bike"
+          />
+          <label
+            for="vehicle1"
+            class="cursor-pointer text-sm text-gray-700 dark:text-gray-400"
+          >
+            Top rated nearby</label
+          >
+        </div>
+        <div class="mb-5">
+          <input
+            class="mr-2 w-4 h-4 cursor-pointer"
+            type="checkbox"
+            id="vehicle1"
+            name="vehicle1"
+            value="Bike"
+          />
+          <label
+            for="vehicle1"
+            class="cursor-pointer text-sm text-gray-700 dark:text-gray-400"
+          >
+            Nearby Restaurant</label
+          >
+        </div>
+        <div class="mb-5">
+          <input
+            class="mr-2 w-4 h-4 cursor-pointer"
+            type="checkbox"
+            id="vehicle1"
+            name="vehicle1"
+            value="Bike"
+          />
+          <label
+            for="vehicle1"
+            class="cursor-pointer text-sm text-gray-700 dark:text-gray-400"
+          >
+            Buy apartment</label
+          >
+        </div>
+        <div class="mb-5">
+          <input
+            class="mr-2 w-4 h-4 cursor-pointer"
+            type="checkbox"
+            id="vehicle1"
+            name="vehicle1"
+            value="Bike"
+          />
+          <label
+            for="vehicle1"
+            class="cursor-pointer text-sm text-gray-700 dark:text-gray-400"
+          >
+            Top Restaurants</label
+          >
+        </div>
+        <div class="mb-5">
+          <input
+            class="mr-2 w-4 h-4 cursor-pointer"
+            type="checkbox"
+            id="vehicle1"
+            name="vehicle1"
+            value="Bike"
+          />
+          <label
+            for="vehicle1"
+            class="cursor-pointer text-sm text-gray-700 dark:text-gray-400"
+          >
+            Delicious food</label
+          >
+        </div>
+        <div class="mb-5">
+          <input
+            class="mr-2 w-4 h-4 cursor-pointer"
+            type="checkbox"
+            id="vehicle1"
+            name="vehicle1"
+            value="Bike"
+          />
+          <label
+            for="vehicle1"
+            class="cursor-pointer text-sm text-gray-700 dark:text-gray-400"
+          >
+            Parking slot free</label
+          >
+        </div>
+        <div class="mb-5">
+          <input
+            class="mr-2 w-4 h-4 cursor-pointer"
+            type="checkbox"
+            id="vehicle1"
+            name="vehicle1"
+            value="Bike"
+          />
+          <label
+            for="vehicle1"
+            class="cursor-pointer text-sm text-gray-700 dark:text-gray-400"
+          >
+            Free internet</label
+          >
+        </div>
+        <div class="mb-5">
+          <input
+            class="mr-2 w-4 h-4 cursor-pointer"
+            type="checkbox"
+            id="vehicle1"
+            name="vehicle1"
+            value="Bike"
+          />
+          <label
+            for="vehicle1"
+            class="cursor-pointer text-sm text-gray-700 dark:text-gray-400"
+          >
+            Amazing place</label
+          >
+        </div>
+        <div class="mb-5">
+          <input
+            class="mr-2 w-4 h-4 cursor-pointer"
+            type="checkbox"
+            id="vehicle1"
+            name="vehicle1"
+            value="Bike"
+          />
+          <label
+            for="vehicle1"
+            class="cursor-pointer text-sm text-gray-700 dark:text-gray-400"
+          >
+            Resonable price range</label
+          >
+        </div>
+        <div class="mb-5">
+          <input
+            class="mr-2 w-4 h-4 cursor-pointer"
+            type="checkbox"
+            id="vehicle1"
+            name="vehicle1"
+            value="Bike"
+          />
+          <label
+            for="vehicle1"
+            class="cursor-pointer text-sm text-gray-700 dark:text-gray-400"
+          >
+            Secured apartment</label
+          >
+        </div>
+        <div class="mb-5">
+          <input
+            class="mr-2 w-4 h-4 cursor-pointer"
+            type="checkbox"
+            id="vehicle1"
+            name="vehicle1"
+            value="Bike"
+          />
+          <label
+            for="vehicle1"
+            class="cursor-pointer text-sm text-gray-700 dark:text-gray-400"
+          >
+            Top events</label
+          >
+        </div>
+      </div>
+    </div>
+    <div class="bg-white shadow-front-2 dark:bg-foreground rounded-lg p-6 mb-7">
+      <h4 class="text-gray-700 dark:text-gray-300 text-xl font-semibold mb-7">
+        Media and Attachment
+      </h4>
+      <div class="grid lg:grid-cols-2 grid-cols-1 mb-7">
+        <div>
+          <label
+            for=""
+            class="text-base text-gray-700 dark:text-gray-200 block mb-3"
+            >Upload Video Link</label
+          >
+          <input
+            type="text"
+            class="border border-gray-200 dark:border-gray-800 dark:text-gray-300 rounded-lg px-4 dark:bg-foreground py-[15px] shadow-input hover:border hover:border-blue-200 focus:border-blue-200 focus:outline-none w-full mb-4"
+            placeholder="e.g. www.youtube.com"
+          />
+        </div>
+      </div>
+      <div>
+        <label class="text-base text-gray-700 dark:text-gray-200 block mb-3"
+          >Photos or Images <sup class="text-red-500">*</sup></label
+        >
+        <label
+          for="upload-img"
+          class="flex flex-col justify-center items-center cursor-pointer bg-gray-100 dark:bg-background dark:border-gray-800 border border-gray-200 rounded-lg py-10"
+        >
+          <svg
+            class="mb-2"
+            width="43"
+            height="42"
+            viewBox="0 0 43 42"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <g clip-path="url(#clip0_780_19100)">
+              <path
+                d="M9.95 35C4.73084 35 0.5 30.9688 0.5 26C0.5 22.075 3.13616 18.7375 6.81312 17.5063C6.80459 17.3375 6.8 17.1687 6.8 17C6.8 11.475 11.4987 7 17.3 7C21.1916 7 24.5844 9.01562 26.4022 12.0125C27.3997 11.3187 28.6072 11 29.9 11C33.3781 11 36.2 13.6312 36.2 17C36.2 17.7625 36.0491 18.4875 35.78 19.1625C39.6125 19.9 42.5 23.1313 42.5 27C42.5 31.4188 38.7397 35 34.1 35H9.95ZM15.1344 21.4375C14.5241 22.025 14.5241 22.975 15.1344 23.5063C15.7512 24.1438 16.7487 24.1438 17.3066 23.5063L19.925 21.1187V29.5C19.925 30.3312 20.6272 31 21.5 31C22.3728 31 23.075 30.3312 23.075 29.5V21.1187L25.6344 23.5063C26.2512 24.1438 27.2487 24.1438 27.8066 23.5063C28.4759 22.975 28.4759 22.025 27.8066 21.4375L22.5566 16.4375C21.9987 15.8562 21.0012 15.8562 20.3844 16.4375L15.1344 21.4375Z"
+                fill="#98A2B3"
+              />
+            </g>
+            <defs>
+              <clipPath id="clip0_780_19100">
+                <rect
+                  width="42"
+                  height="42"
+                  fill="white"
+                  transform="translate(0.5)"
+                />
+              </clipPath>
+            </defs>
+          </svg>
+          <h6
+            class="text-base font-medium text-gray-700 dark:text-gray-400 mb-4"
+          >
+            Drag and Drop Images
+          </h6>
+          <div class="text-base text-gray-700 dark:text-gray-400 mb-4">OR</div>
+          <div class="bg-blue-500 text-white p-4 rounded-lg">Browse Images</div>
+          <input type="file" id="upload-img" class="hidden" />
+        </label>
+      </div>
+    </div>
+    <div class="bg-white shadow-front-2 dark:bg-foreground rounded-lg p-6 mb-7">
+      <div class="flex justify-between items-center mb-7">
+        <h4 class="text-gray-700 dark:text-gray-300 text-xl font-semibold">
+          Overiew
+        </h4>
+
+        <!-- custom-checkbox  -->
+        <input type="checkbox" name="" class="custom-switch" />
+      </div>
+
+      <div class="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-7">
+        <div class="lg:col-span-1 col-span-2">
+          <label
+            for=""
+            class="text-base text-gray-700 dark:text-gray-200 block mb-3"
+            >Bathroom</label
+          >
+          <input
+            type="text"
+            class="border border-gray-200 dark:border-gray-800 dark:text-gray-300 rounded-lg px-4 dark:bg-foreground py-[15px] shadow-input hover:border hover:border-blue-200 focus:border-blue-200 focus:outline-none w-full mb-4"
+            placeholder="How many bathrooms?"
+          />
+        </div>
+        <div class="lg:col-span-1 col-span-2">
+          <label
+            for=""
+            class="text-base text-gray-700 dark:text-gray-200 block mb-3"
+            >Bedroom
+          </label>
+          <input
+            type="text"
+            class="border border-gray-200 dark:border-gray-800 dark:text-gray-300 rounded-lg px-4 dark:bg-foreground py-[15px] shadow-input hover:border hover:border-blue-200 focus:border-blue-200 focus:outline-none w-full mb-4"
+            placeholder="How many bedrooms?"
+          />
+        </div>
+        <div class="lg:col-span-1 col-span-2">
+          <label
+            for=""
+            class="text-base text-gray-700 dark:text-gray-200 block mb-3"
+            >Garage or Parking Slot
+          </label>
+          <input
+            type="text"
+            class="border border-gray-200 dark:border-gray-800 dark:text-gray-300 rounded-lg px-4 dark:bg-foreground py-[15px] shadow-input hover:border hover:border-blue-200 focus:border-blue-200 focus:outline-none w-full mb-4"
+            placeholder="How many slot?"
+          />
+        </div>
+        <div class="lg:col-span-1 col-span-2">
+          <label
+            for=""
+            class="text-base text-gray-700 dark:text-gray-200 block mb-3"
+            >Living Area
+          </label>
+          <input
+            type="text"
+            class="border border-gray-200 dark:border-gray-800 dark:text-gray-300 rounded-lg px-4 dark:bg-foreground py-[15px] shadow-input hover:border hover:border-blue-200 focus:border-blue-200 focus:outline-none w-full mb-4"
+            placeholder="How many slot?"
+          />
+        </div>
+        <div class="lg:col-span-1 col-span-2">
+          <label
+            for=""
+            class="text-base text-gray-700 dark:text-gray-200 block mb-3"
+            >Publish Date
+          </label>
+          <input
+            type="date"
+            class="border border-gray-200 dark:border-gray-800 dark:text-gray-300 rounded-lg px-4 dark:bg-foreground py-[15px] shadow-input hover:border hover:border-blue-200 focus:border-blue-200 focus:outline-none w-full mb-4"
+            placeholder="How many slot?"
+          />
+        </div>
+        <div class="lg:col-span-1 col-span-2">
+          <label
+            for=""
+            class="text-base text-gray-700 dark:text-gray-200 block mb-3"
+            >Year in Built
+          </label>
+          <input
+            type="text"
+            class="border border-gray-200 dark:border-gray-800 dark:text-gray-300 rounded-lg px-4 dark:bg-foreground py-[15px] shadow-input hover:border hover:border-blue-200 focus:border-blue-200 focus:outline-none w-full mb-4"
+            placeholder="2020"
+          />
+        </div>
+      </div>
+    </div>
+    <div class="bg-white shadow-front-2 dark:bg-foreground rounded-lg p-6 mb-7">
+      <div class="flex justify-between items-center mb-7">
+        <h4 class="text-gray-700 dark:text-gray-300 text-xl font-semibold">
+          Features
+        </h4>
+
+        <!-- custom-checkbox  -->
+        <input type="checkbox" name="" class="custom-switch" />
+      </div>
+
+      <div
+        class="grid xl:grid-cols-6 lg:grid-cols-4 sm:grid-cols-2 grid-cols-1"
+      >
+        <div class="flex items-center mb-5">
+          <input
+            class="mr-2 w-4 h-4 cursor-pointer"
+            type="checkbox"
+            id="bike1"
+            name="vehicle1"
+            value="Bike"
+          />
+          <label
+            for="bike1"
+            class="cursor-pointer text-sm text-gray-700 dark:text-gray-400"
+          >
+            Equipped Kitchen</label
+          >
+        </div>
+        <div class="mb-5">
+          <input
+            class="mr-2 w-4 h-4 cursor-pointer"
+            type="checkbox"
+            id="bike2"
+            name="bike2"
+            value="Bike"
+          />
+          <label
+            for="bike2"
+            class="cursor-pointer text-sm text-gray-700 dark:text-gray-400"
+          >
+            Gym</label
+          >
+        </div>
+        <div class="mb-5">
+          <input
+            class="mr-2 w-4 h-4 cursor-pointer"
+            type="checkbox"
+            id="bike3"
+            name="bike3"
+            value="Bike"
+          />
+          <label
+            for="bike3"
+            class="cursor-pointer text-sm text-gray-700 dark:text-gray-400"
+          >
+            Laundry</label
+          >
+        </div>
+        <div class="mb-5">
+          <input
+            class="mr-2 w-4 h-4 cursor-pointer"
+            type="checkbox"
+            id="bike4"
+            name="bike4"
+            value="Bike"
+          />
+          <label
+            for="bike4"
+            class="cursor-pointer text-sm text-gray-700 dark:text-gray-400"
+          >
+            Basketball court</label
+          >
+        </div>
+        <div class="mb-5">
+          <input
+            class="mr-2 w-4 h-4 cursor-pointer"
+            type="checkbox"
+            id="bike5"
+            name="bike5"
+            value="Bike"
+          />
+          <label
+            for="bike5"
+            class="cursor-pointer text-sm text-gray-700 dark:text-gray-400"
+          >
+            Water</label
+          >
+        </div>
+        <div class="mb-5">
+          <input
+            class="mr-2 w-4 h-4 cursor-pointer"
+            type="checkbox"
+            id="bike5"
+            name="bike6"
+            value="Bike"
+          />
+          <label
+            for="bike6"
+            class="cursor-pointer text-sm text-gray-700 dark:text-gray-400"
+          >
+            Vitamin C</label
+          >
+        </div>
+        <div class="mb-5">
+          <input
+            class="mr-2 w-4 h-4 cursor-pointer"
+            type="checkbox"
+            id="bike2"
+            name="vehicle1"
+            value="Bike"
+          />
+          <label
+            for="vehicle1"
+            class="cursor-pointer text-sm text-gray-700 dark:text-gray-400"
+          >
+            Vitamin D</label
+          >
+        </div>
+        <div class="mb-5">
+          <input
+            class="mr-2 w-4 h-4 cursor-pointer"
+            type="checkbox"
+            id="vehicle1"
+            name="vehicle1"
+            value="Bike"
+          />
+          <label
+            for="vehicle1"
+            class="cursor-pointer text-sm text-gray-700 dark:text-gray-400"
+          >
+            Vitamin A</label
+          >
+        </div>
+        <div class="mb-5">
+          <input
+            class="mr-2 w-4 h-4 cursor-pointer"
+            type="checkbox"
+            id="vehicle1"
+            name="vehicle1"
+            value="Bike"
+          />
+          <label
+            for="vehicle1"
+            class="cursor-pointer text-sm text-gray-700 dark:text-gray-400"
+          >
+            Iron</label
+          >
+        </div>
+        <div class="mb-5">
+          <input
+            class="mr-2 w-4 h-4 cursor-pointer"
+            type="checkbox"
+            id="vehicle1"
+            name="vehicle1"
+            value="Bike"
+          />
+          <label
+            for="vehicle1"
+            class="cursor-pointer text-sm text-gray-700 dark:text-gray-400"
+          >
+            Copper</label
+          >
+        </div>
+        <div class="mb-5">
+          <input
+            class="mr-2 w-4 h-4 cursor-pointer"
+            type="checkbox"
+            id="vehicle1"
+            name="vehicle1"
+            value="Bike"
+          />
+          <label
+            for="vehicle1"
+            class="cursor-pointer text-sm text-gray-700 dark:text-gray-400"
+          >
+            Calsium</label
+          >
+        </div>
+        <div class="mb-5">
+          <input
+            class="mr-2 w-4 h-4 cursor-pointer"
+            type="checkbox"
+            id="vehicle1"
+            name="vehicle1"
+            value="Bike"
+          />
+          <label
+            for="vehicle1"
+            class="cursor-pointer text-sm text-gray-700 dark:text-gray-400"
+          >
+            Protein</label
+          >
+        </div>
+        <div class="mb-5">
+          <input
+            class="mr-2 w-4 h-4 cursor-pointer"
+            type="checkbox"
+            id="bike2"
+            name="bike2"
+            value="Bike"
+          />
+          <label
+            for="bike2"
+            class="cursor-pointer text-sm text-gray-700 dark:text-gray-400"
+          >
+            Gym</label
+          >
+        </div>
+        <div class="mb-5">
+          <input
+            class="mr-2 w-4 h-4 cursor-pointer"
+            type="checkbox"
+            id="bike3"
+            name="bike3"
+            value="Bike"
+          />
+          <label
+            for="bike3"
+            class="cursor-pointer text-sm text-gray-700 dark:text-gray-400"
+          >
+            Laundry</label
+          >
+        </div>
+        <div class="mb-5">
+          <input
+            class="mr-2 w-4 h-4 cursor-pointer"
+            type="checkbox"
+            id="bike4"
+            name="bike4"
+            value="Bike"
+          />
+          <label
+            for="bike4"
+            class="cursor-pointer text-sm text-gray-700 dark:text-gray-400"
+          >
+            Basketball court</label
+          >
+        </div>
+        <div class="mb-5">
+          <input
+            class="mr-2 w-4 h-4 cursor-pointer"
+            type="checkbox"
+            id="bike5"
+            name="bike5"
+            value="Bike"
+          />
+          <label
+            for="bike5"
+            class="cursor-pointer text-sm text-gray-700 dark:text-gray-400"
+          >
+            Water</label
+          >
+        </div>
+        <div class="mb-5">
+          <input
+            class="mr-2 w-4 h-4 cursor-pointer"
+            type="checkbox"
+            id="bike5"
+            name="bike6"
+            value="Bike"
+          />
+          <label
+            for="bike6"
+            class="cursor-pointer text-sm text-gray-700 dark:text-gray-400"
+          >
+            Vitamin C</label
+          >
+        </div>
+        <div class="mb-5">
+          <input
+            class="mr-2 w-4 h-4 cursor-pointer"
+            type="checkbox"
+            id="bike2"
+            name="vehicle1"
+            value="Bike"
+          />
+          <label
+            for="vehicle1"
+            class="cursor-pointer text-sm text-gray-700 dark:text-gray-400"
+          >
+            Vitamin D</label
+          >
+        </div>
+        <div class="mb-5">
+          <input
+            class="mr-2 w-4 h-4 cursor-pointer"
+            type="checkbox"
+            id="vehicle1"
+            name="vehicle1"
+            value="Bike"
+          />
+          <label
+            for="vehicle1"
+            class="cursor-pointer text-sm text-gray-700 dark:text-gray-400"
+          >
+            Vitamin A</label
+          >
+        </div>
+        <div class="mb-5">
+          <input
+            class="mr-2 w-4 h-4 cursor-pointer"
+            type="checkbox"
+            id="vehicle1"
+            name="vehicle1"
+            value="Bike"
+          />
+          <label
+            for="vehicle1"
+            class="cursor-pointer text-sm text-gray-700 dark:text-gray-400"
+          >
+            Iron</label
+          >
+        </div>
+        <div class="mb-5">
+          <input
+            class="mr-2 w-4 h-4 cursor-pointer"
+            type="checkbox"
+            id="vehicle1"
+            name="vehicle1"
+            value="Bike"
+          />
+          <label
+            for="vehicle1"
+            class="cursor-pointer text-sm text-gray-700 dark:text-gray-400"
+          >
+            Copper</label
+          >
+        </div>
+        <div class="mb-5">
+          <input
+            class="mr-2 w-4 h-4 cursor-pointer"
+            type="checkbox"
+            id="vehicle1"
+            name="vehicle1"
+            value="Bike"
+          />
+          <label
+            for="vehicle1"
+            class="cursor-pointer text-sm text-gray-700 dark:text-gray-400"
+          >
+            Calsium</label
+          >
+        </div>
+        <div class="mb-5">
+          <input
+            class="mr-2 w-4 h-4 cursor-pointer"
+            type="checkbox"
+            id="vehicle1"
+            name="vehicle1"
+            value="Bike"
+          />
+          <label
+            for="vehicle1"
+            class="cursor-pointer text-sm text-gray-700 dark:text-gray-400"
+          >
+            Protein</label
+          >
+        </div>
+        <div class="mb-5">
+          <input
+            class="mr-2 w-4 h-4 cursor-pointer"
+            type="checkbox"
+            id="vehicle1"
+            name="vehicle1"
+            value="Bike"
+          />
+          <label
+            for="vehicle1"
+            class="cursor-pointer text-sm text-gray-700 dark:text-gray-400"
+          >
+            Iron</label
+          >
+        </div>
+        <div class="mb-5">
+          <input
+            class="mr-2 w-4 h-4 cursor-pointer"
+            type="checkbox"
+            id="bike2"
+            name="bike2"
+            value="Bike"
+          />
+          <label
+            for="bike2"
+            class="cursor-pointer text-sm text-gray-700 dark:text-gray-400"
+          >
+            Gym</label
+          >
+        </div>
+        <div class="mb-5">
+          <input
+            class="mr-2 w-4 h-4 cursor-pointer"
+            type="checkbox"
+            id="bike3"
+            name="bike3"
+            value="Bike"
+          />
+          <label
+            for="bike3"
+            class="cursor-pointer text-sm text-gray-700 dark:text-gray-400"
+          >
+            Laundry</label
+          >
+        </div>
+        <div class="mb-5">
+          <input
+            class="mr-2 w-4 h-4 cursor-pointer"
+            type="checkbox"
+            id="bike4"
+            name="bike4"
+            value="Bike"
+          />
+          <label
+            for="bike4"
+            class="cursor-pointer text-sm text-gray-700 dark:text-gray-400"
+          >
+            Basketball court</label
+          >
+        </div>
+        <div class="mb-5">
+          <input
+            class="mr-2 w-4 h-4 cursor-pointer"
+            type="checkbox"
+            id="bike5"
+            name="bike5"
+            value="Bike"
+          />
+          <label
+            for="bike5"
+            class="cursor-pointer text-sm text-gray-700 dark:text-gray-400"
+          >
+            Water</label
+          >
+        </div>
+        <div class="mb-5">
+          <input
+            class="mr-2 w-4 h-4 cursor-pointer"
+            type="checkbox"
+            id="bike5"
+            name="bike6"
+            value="Bike"
+          />
+          <label
+            for="bike6"
+            class="cursor-pointer text-sm text-gray-700 dark:text-gray-400"
+          >
+            Vitamin C</label
+          >
+        </div>
+        <div class="mb-5">
+          <input
+            class="mr-2 w-4 h-4 cursor-pointer"
+            type="checkbox"
+            id="bike2"
+            name="vehicle1"
+            value="Bike"
+          />
+          <label
+            for="vehicle1"
+            class="cursor-pointer text-sm text-gray-700 dark:text-gray-400"
+          >
+            Vitamin D</label
+          >
+        </div>
+        <div class="mb-5">
+          <input
+            class="mr-2 w-4 h-4 cursor-pointer"
+            type="checkbox"
+            id="vehicle1"
+            name="vehicle1"
+            value="Bike"
+          />
+          <label
+            for="vehicle1"
+            class="cursor-pointer text-sm text-gray-700 dark:text-gray-400"
+          >
+            Vitamin A</label
+          >
+        </div>
+        <div class="mb-5">
+          <input
+            class="mr-2 w-4 h-4 cursor-pointer"
+            type="checkbox"
+            id="vehicle1"
+            name="vehicle1"
+            value="Bike"
+          />
+          <label
+            for="vehicle1"
+            class="cursor-pointer text-sm text-gray-700 dark:text-gray-400"
+          >
+            Iron</label
+          >
+        </div>
+        <div class="mb-5">
+          <input
+            class="mr-2 w-4 h-4 cursor-pointer"
+            type="checkbox"
+            id="vehicle1"
+            name="vehicle1"
+            value="Bike"
+          />
+          <label
+            for="vehicle1"
+            class="cursor-pointer text-sm text-gray-700 dark:text-gray-400"
+          >
+            Copper</label
+          >
+        </div>
+        <div class="mb-5">
+          <input
+            class="mr-2 w-4 h-4 cursor-pointer"
+            type="checkbox"
+            id="vehicle1"
+            name="vehicle1"
+            value="Bike"
+          />
+          <label
+            for="vehicle1"
+            class="cursor-pointer text-sm text-gray-700 dark:text-gray-400"
+          >
+            Calsium</label
+          >
+        </div>
+        <div class="mb-5">
+          <input
+            class="mr-2 w-4 h-4 cursor-pointer"
+            type="checkbox"
+            id="vehicle1"
+            name="vehicle1"
+            value="Bike"
+          />
+          <label
+            for="vehicle1"
+            class="cursor-pointer text-sm text-gray-700 dark:text-gray-400"
+          >
+            Protein</label
+          >
+        </div>
+        <div class="mb-5">
+          <input
+            class="mr-2 w-4 h-4 cursor-pointer"
+            type="checkbox"
+            id="bike2"
+            name="bike2"
+            value="Bike"
+          />
+          <label
+            for="bike2"
+            class="cursor-pointer text-sm text-gray-700 dark:text-gray-400"
+          >
+            Gym</label
+          >
+        </div>
+        <div class="mb-5">
+          <input
+            class="mr-2 w-4 h-4 cursor-pointer"
+            type="checkbox"
+            id="bike3"
+            name="bike3"
+            value="Bike"
+          />
+          <label
+            for="bike3"
+            class="cursor-pointer text-sm text-gray-700 dark:text-gray-400"
+          >
+            Laundry</label
+          >
+        </div>
+        <div class="mb-5">
+          <input
+            class="mr-2 w-4 h-4 cursor-pointer"
+            type="checkbox"
+            id="bike4"
+            name="bike4"
+            value="Bike"
+          />
+          <label
+            for="bike4"
+            class="cursor-pointer text-sm text-gray-700 dark:text-gray-400"
+          >
+            Basketball court</label
+          >
+        </div>
+        <div class="mb-5">
+          <input
+            class="mr-2 w-4 h-4 cursor-pointer"
+            type="checkbox"
+            id="bike5"
+            name="bike5"
+            value="Bike"
+          />
+          <label
+            for="bike5"
+            class="cursor-pointer text-sm text-gray-700 dark:text-gray-400"
+          >
+            Water</label
+          >
+        </div>
+        <div class="mb-5">
+          <input
+            class="mr-2 w-4 h-4 cursor-pointer"
+            type="checkbox"
+            id="bike5"
+            name="bike6"
+            value="Bike"
+          />
+          <label
+            for="bike6"
+            class="cursor-pointer text-sm text-gray-700 dark:text-gray-400"
+          >
+            Vitamin C</label
+          >
+        </div>
+        <div class="mb-5">
+          <input
+            class="mr-2 w-4 h-4 cursor-pointer"
+            type="checkbox"
+            id="bike2"
+            name="vehicle1"
+            value="Bike"
+          />
+          <label
+            for="vehicle1"
+            class="cursor-pointer text-sm text-gray-700 dark:text-gray-400"
+          >
+            Vitamin D</label
+          >
+        </div>
+        <div class="mb-5">
+          <input
+            class="mr-2 w-4 h-4 cursor-pointer"
+            type="checkbox"
+            id="vehicle1"
+            name="vehicle1"
+            value="Bike"
+          />
+          <label
+            for="vehicle1"
+            class="cursor-pointer text-sm text-gray-700 dark:text-gray-400"
+          >
+            Vitamin A</label
+          >
+        </div>
+        <div class="mb-5">
+          <input
+            class="mr-2 w-4 h-4 cursor-pointer"
+            type="checkbox"
+            id="vehicle1"
+            name="vehicle1"
+            value="Bike"
+          />
+          <label
+            for="vehicle1"
+            class="cursor-pointer text-sm text-gray-700 dark:text-gray-400"
+          >
+            Iron</label
+          >
+        </div>
+        <div class="mb-5">
+          <input
+            class="mr-2 w-4 h-4 cursor-pointer"
+            type="checkbox"
+            id="vehicle1"
+            name="vehicle1"
+            value="Bike"
+          />
+          <label
+            for="vehicle1"
+            class="cursor-pointer text-sm text-gray-700 dark:text-gray-400"
+          >
+            Copper</label
+          >
+        </div>
+        <div class="mb-5">
+          <input
+            class="mr-2 w-4 h-4 cursor-pointer"
+            type="checkbox"
+            id="vehicle1"
+            name="vehicle1"
+            value="Bike"
+          />
+          <label
+            for="vehicle1"
+            class="cursor-pointer text-sm text-gray-700 dark:text-gray-400"
+          >
+            Calsium</label
+          >
+        </div>
+        <div class="mb-5">
+          <input
+            class="mr-2 w-4 h-4 cursor-pointer"
+            type="checkbox"
+            id="vehicle1"
+            name="vehicle1"
+            value="Bike"
+          />
+          <label
+            for="vehicle1"
+            class="cursor-pointer text-sm text-gray-700 dark:text-gray-400"
+          >
+            Protein</label
+          >
+        </div>
+        <div class="mb-5">
+          <input
+            class="mr-2 w-4 h-4 cursor-pointer"
+            type="checkbox"
+            id="vehicle1"
+            name="vehicle1"
+            value="Bike"
+          />
+          <label
+            for="vehicle1"
+            class="cursor-pointer text-sm text-gray-700 dark:text-gray-400"
+          >
+            Iron</label
+          >
+        </div>
+      </div>
+    </div>
+    <div class="bg-white shadow-front-2 dark:bg-foreground rounded-lg p-6 mb-7">
+      <div class="flex justify-between items-center mb-7">
+        <h4 class="text-gray-700 dark:text-gray-300 text-xl font-semibold">
+          Time Schedule
+        </h4>
+
+        <!-- custom-checkbox  -->
+        <input type="checkbox" name="" class="custom-switch" />
+      </div>
+      <div class="flex flex-col">
+        <div class="overflow-x-auto sm:-mx-6 lg:-mx-8">
+          <div class="py-2 inline-block min-w-full sm:px-6 lg:px-8">
+            <div class="overflow-hidden">
+              <table class="min-w-full">
+                <thead class="">
+                  <tr>
+                    <th
+                      scope="col"
+                      class="text-sm font-medium text-gray-700 dark:text-gray-100 px-6 pb-2 text-left"
+                    ></th>
+                    <th
+                      scope="col"
+                      class="text-sm font-medium text-gray-700 dark:text-gray-100 px-6 pb-2 text-left"
+                    >
+                      Opening Time
+                    </th>
+                    <th
+                      scope="col"
+                      class="text-sm font-medium text-gray-700 dark:text-gray-100 px-6 pb-2 text-left"
+                    >
+                      Closing Time
+                    </th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr class="align-middle">
+                    <td
+                      class="whitespace-nowrap text-sm font-medium text-gray-700 dark:text-gray-300"
+                    >
+                      Sunday
+                    </td>
+                    <td
+                      class="text-gray-900 font-light px-6 py-1 whitespace-nowrap"
+                    >
+                      <select
+                        name="cars"
+                        class="border border-gray-200 text-gray-400 dark:bg-foreground dark:border-gray-800 rounded-lg px-4 py-[0.969rem] shadow-input hover:border hover:border-blue-200 focus:border-blue-200 focus:outline-none w-full mb-4"
+                      >
+                        <option value="volvo">Morning 11.00 AM</option>
+                        <option value="saab">Saab</option>
+                        <option value="opel">Opel</option>
+                        <option value="audi">Audi</option>
+                      </select>
+                    </td>
+                    <td
+                      class="text-gray-900 font-light px-6 py-1 whitespace-nowrap"
+                    >
+                      <select
+                        name="cars"
+                        class="border border-gray-200 text-gray-400 dark:bg-foreground dark:border-gray-800 rounded-lg px-4 py-[0.969rem] shadow-input hover:border hover:border-blue-200 focus:border-blue-200 focus:outline-none w-full mb-4"
+                      >
+                        <option value="volvo">Morning 11.00 AM</option>
+                        <option value="saab">Saab</option>
+                        <option value="opel">Opel</option>
+                        <option value="audi">Audi</option>
+                      </select>
+                    </td>
+                  </tr>
+                  <tr class="align-middle">
+                    <td
+                      class="whitespace-nowrap text-sm font-medium text-gray-700 dark:text-gray-300"
+                    >
+                      Monday
+                    </td>
+                    <td
+                      class="text-gray-900 font-light px-6 py-1 whitespace-nowrap"
+                    >
+                      <select
+                        name="cars"
+                        class="border border-gray-200 text-gray-400 dark:bg-foreground dark:border-gray-800 rounded-lg px-4 py-[0.969rem] shadow-input hover:border hover:border-blue-200 focus:border-blue-200 focus:outline-none w-full mb-4"
+                      >
+                        <option value="volvo">Morning 11.00 AM</option>
+                        <option value="saab">Saab</option>
+                        <option value="opel">Opel</option>
+                        <option value="audi">Audi</option>
+                      </select>
+                    </td>
+                    <td
+                      class="text-gray-900 font-light px-6 py-1 whitespace-nowrap"
+                    >
+                      <select
+                        name="cars"
+                        class="border border-gray-200 text-gray-400 dark:bg-foreground dark:border-gray-800 rounded-lg px-4 py-[0.969rem] shadow-input hover:border hover:border-blue-200 focus:border-blue-200 focus:outline-none w-full mb-4"
+                      >
+                        <option value="volvo">Morning 11.00 AM</option>
+                        <option value="saab">Saab</option>
+                        <option value="opel">Opel</option>
+                        <option value="audi">Audi</option>
+                      </select>
+                    </td>
+                  </tr>
+                  <tr class="align-middle">
+                    <td
+                      class="whitespace-nowrap text-sm font-medium text-gray-700 dark:text-gray-300"
+                    >
+                      Tuesday
+                    </td>
+                    <td
+                      class="text-gray-900 font-light px-6 py-1 whitespace-nowrap"
+                    >
+                      <select
+                        name="cars"
+                        class="border border-gray-200 text-gray-400 dark:bg-foreground dark:border-gray-800 rounded-lg px-4 py-[0.969rem] shadow-input hover:border hover:border-blue-200 focus:border-blue-200 focus:outline-none w-full mb-4"
+                      >
+                        <option value="volvo">Morning 11.00 AM</option>
+                        <option value="saab">Saab</option>
+                        <option value="opel">Opel</option>
+                        <option value="audi">Audi</option>
+                      </select>
+                    </td>
+                    <td
+                      class="text-gray-900 font-light px-6 py-1 whitespace-nowrap"
+                    >
+                      <select
+                        name="cars"
+                        class="border border-gray-200 text-gray-400 dark:bg-foreground dark:border-gray-800 rounded-lg px-4 py-[0.969rem] shadow-input hover:border hover:border-blue-200 focus:border-blue-200 focus:outline-none w-full mb-4"
+                      >
+                        <option value="volvo">Morning 11.00 AM</option>
+                        <option value="saab">Saab</option>
+                        <option value="opel">Opel</option>
+                        <option value="audi">Audi</option>
+                      </select>
+                    </td>
+                  </tr>
+                  <tr class="align-middle">
+                    <td
+                      class="whitespace-nowrap text-sm font-medium text-gray-700 dark:text-gray-300"
+                    >
+                      Wednesday
+                    </td>
+                    <td
+                      class="text-gray-900 font-light px-6 py-1 whitespace-nowrap"
+                    >
+                      <select
+                        name="cars"
+                        class="border border-gray-200 text-gray-400 dark:bg-foreground dark:border-gray-800 rounded-lg px-4 py-[0.969rem] shadow-input hover:border hover:border-blue-200 focus:border-blue-200 focus:outline-none w-full mb-4"
+                      >
+                        <option value="volvo">Morning 11.00 AM</option>
+                        <option value="saab">Saab</option>
+                        <option value="opel">Opel</option>
+                        <option value="audi">Audi</option>
+                      </select>
+                    </td>
+                    <td
+                      class="text-gray-900 font-light px-6 py-1 whitespace-nowrap"
+                    >
+                      <select
+                        name="cars"
+                        class="border border-gray-200 text-gray-400 dark:bg-foreground dark:border-gray-800 rounded-lg px-4 py-[0.969rem] shadow-input hover:border hover:border-blue-200 focus:border-blue-200 focus:outline-none w-full mb-4"
+                      >
+                        <option value="volvo">Morning 11.00 AM</option>
+                        <option value="saab">Saab</option>
+                        <option value="opel">Opel</option>
+                        <option value="audi">Audi</option>
+                      </select>
+                    </td>
+                  </tr>
+                  <tr class="align-middle">
+                    <td
+                      class="whitespace-nowrap text-sm font-medium text-gray-700 dark:text-gray-300"
+                    >
+                      Thursday
+                    </td>
+                    <td
+                      class="text-gray-900 font-light px-6 py-1 whitespace-nowrap"
+                    >
+                      <select
+                        name="cars"
+                        class="border border-gray-200 text-gray-400 dark:bg-foreground dark:border-gray-800 rounded-lg px-4 py-[0.969rem] shadow-input hover:border hover:border-blue-200 focus:border-blue-200 focus:outline-none w-full mb-4"
+                      >
+                        <option value="volvo">Morning 11.00 AM</option>
+                        <option value="saab">Saab</option>
+                        <option value="opel">Opel</option>
+                        <option value="audi">Audi</option>
+                      </select>
+                    </td>
+                    <td
+                      class="text-gray-900 font-light px-6 py-1 whitespace-nowrap"
+                    >
+                      <select
+                        name="cars"
+                        class="border border-gray-200 text-gray-400 dark:bg-foreground dark:border-gray-800 rounded-lg px-4 py-[0.969rem] shadow-input hover:border hover:border-blue-200 focus:border-blue-200 focus:outline-none w-full mb-4"
+                      >
+                        <option value="volvo">Morning 11.00 AM</option>
+                        <option value="saab">Saab</option>
+                        <option value="opel">Opel</option>
+                        <option value="audi">Audi</option>
+                      </select>
+                    </td>
+                  </tr>
+                  <tr class="align-middle">
+                    <td
+                      class="whitespace-nowrap text-sm font-medium text-gray-700 dark:text-gray-300"
+                    >
+                      Friday
+                    </td>
+                    <td
+                      class="text-gray-900 font-light px-6 py-1 whitespace-nowrap"
+                    >
+                      <select
+                        name="cars"
+                        class="border border-gray-200 text-gray-400 dark:bg-foreground dark:border-gray-800 rounded-lg px-4 py-[0.969rem] shadow-input hover:border hover:border-blue-200 focus:border-blue-200 focus:outline-none w-full mb-4"
+                      >
+                        <option value="volvo">Morning 11.00 AM</option>
+                        <option value="saab">Saab</option>
+                        <option value="opel">Opel</option>
+                        <option value="audi">Audi</option>
+                      </select>
+                    </td>
+                    <td
+                      class="text-sm text-gray-900 font-light px-6 py-1 whitespace-nowrap"
+                    >
+                      <select
+                        name="cars"
+                        class="border border-gray-200 text-gray-400 dark:bg-foreground dark:border-gray-800 rounded-lg px-4 py-[0.969rem] shadow-input hover:border hover:border-blue-200 focus:border-blue-200 focus:outline-none w-full mb-4"
+                      >
+                        <option value="volvo">Morning 11.00 AM</option>
+                        <option value="saab">Saab</option>
+                        <option value="opel">Opel</option>
+                        <option value="audi">Audi</option>
+                      </select>
+                    </td>
+                  </tr>
+                  <tr class="align-middle">
+                    <td
+                      class="whitespace-nowrap text-sm font-medium text-gray-700 dark:text-gray-300"
+                    >
+                      Saturday
+                    </td>
+                    <td
+                      class="text-gray-900 font-light px-6 py-1 whitespace-nowrap"
+                    >
+                      <select
+                        name="cars"
+                        class="border border-gray-200 text-gray-400 dark:bg-foreground dark:border-gray-800 rounded-lg px-4 py-[0.969rem] shadow-input hover:border hover:border-blue-200 focus:border-blue-200 focus:outline-none w-full mb-4"
+                      >
+                        <option value="volvo">Morning 11.00 AM</option>
+                        <option value="saab">Saab</option>
+                        <option value="opel">Opel</option>
+                        <option value="audi">Audi</option>
+                      </select>
+                    </td>
+                    <td
+                      class="text-gray-900 font-light px-6 py-1 whitespace-nowrap"
+                    >
+                      <select
+                        name="cars"
+                        class="border border-gray-200 text-gray-400 dark:bg-foreground dark:border-gray-800 rounded-lg px-4 py-[0.969rem] shadow-input hover:border hover:border-blue-200 focus:border-blue-200 focus:outline-none w-full mb-4"
+                      >
+                        <option value="volvo">Morning 11.00 AM</option>
+                        <option value="saab">Saab</option>
+                        <option value="opel">Opel</option>
+                        <option value="audi">Audi</option>
+                      </select>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="flex flex-wrap sm:justify-start justify-center">
+      <button
+        type="button"
+        class="px-6 py-5 bg-blue-500 hover:bg-blue-600 shadow-glow-blue text-white rounded-lg mr-4 mb-4"
+      >
+        Submit List
+      </button>
+      <button
+        type="button"
+        class="px-6 py-[17px] mb-4 border border-gray-200 dark:border-gray-800 text-gray-500 dark:text-gray-200 rounded-lg mr-4"
+      >
+        Cancel
+      </button>
+    </div>
+  </div>
+</section>

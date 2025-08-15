@@ -1,0 +1,123 @@
+<div
+  class="mobile-navbar fixed bg-white dark:bg-foreground top-0 h-full w-3/4 hidden ease-in duration-300 z-50"
+>
+  <div class="flex justify-end p-4">
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      class="h-6 w-6 text-gray-500 close-navbar-btn"
+      fill="none"
+      viewBox="0 0 24 24"
+      stroke="currentColor"
+      stroke-width="2"
+    >
+      <path
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        d="M6 18L18 6M6 6l12 12"
+      />
+    </svg>
+  </div>
+  <ul class="mx-5">
+    <li class="mb-4">
+      <a href="#" class="text-gray-500 hover:text-blue-500 nav-link">Home</a>
+    </li>
+    <li class="mb-4">
+      <a href="#" class="text-gray-500 hover:text-blue-500 nav-link">Listing</a>
+    </li>
+    <li class="mb-4">
+      <a href="#" class="text-gray-500 hover:text-blue-500 nav-link">Pages</a>
+    </li>
+  </ul>
+</div>
+<header
+  class="bg-no-repeat bg-cover sticky-header-first-content text-white"
+  style="background-image: url('img/bg-header-6.png')"
+>
+  @include("../../Layouts/shared/hero-navbar.html")
+
+  <div class="pt-20 container mx-auto pb-36">
+    <div
+      class="lg:inline-flex flex flex-col justify-center border border-white rounded-lg bg-white bg-opacity-60 backdrop-filter backdrop-blur-lg py-11 px-8"
+    >
+      <h1 class="capitalize text-3xl font-semibold mb-3 text-gray-800">
+        find Nearby resturant
+      </h1>
+      <p class="capitalize text-gray-500 mb-9">
+        The best way to find yourself in the service of others.
+      </p>
+      <input
+        type="text"
+        class="bg-white w-full rounded-lg px-4 py-3 focus:outline-blue-300 mb-3"
+        placeholder="What food you looking for?"
+      />
+      <div class="relative mb-3">
+        <select
+          name="cars"
+          class="bg-white w-full relative appearance-none rounded-lg px-4 py-3 focus:outline-blue-300 text-gray-400"
+        >
+          <option value="volvo">All Category</option>
+          <option value="saab">Saab</option>
+          <option value="mercedes">Mercedes</option>
+          <option value="audi">Audi</option>
+        </select>
+        <svg
+          width="10"
+          height="6"
+          class="w-3 h-3 text-gray-400 absolute right-2 top-1/2 -translate-y-1/2 z-10"
+          viewBox="0 0 10 6"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M4.99982 6.00001C4.79513 6.00001 4.59034 5.92467 4.43435 5.774L0.434558 1.91686C0.122074 1.61552 0.122074 1.12735 0.434558 0.826011C0.747042 0.524671 1.25327 0.524671 1.56575 0.826011L4.99982 4.13893L8.43464 0.826613C8.74713 0.525274 9.25335 0.525274 9.56583 0.826613C9.87832 1.12795 9.87832 1.61612 9.56583 1.91746L5.56604 5.7746C5.4098 5.92527 5.20481 6.00001 4.99982 6.00001Z"
+            fill="currentColor"
+          />
+        </svg>
+      </div>
+      <div class="relative mb-3">
+        <input
+          type="text"
+          class="bg-white w-full rounded-lg px-4 py-3 focus:outline-blue-300"
+          placeholder="Location"
+        />
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          class="w-4 absolute right-0 top-1/2 -translate-y-1/2 h-full rounded-r-lg mr-2 text-gray-400"
+          viewBox="0 0 20 20"
+          fill="currentColor"
+        >
+          <path
+            fill-rule="evenodd"
+            d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z"
+            clip-rule="evenodd"
+          />
+        </svg>
+      </div>
+      <button
+        type="button"
+        class="py-3 px-4 w-full bg-blue-500 hover:bg-blue-600 rounded-lg text-white mb-6"
+      >
+        Search
+      </button>
+      <p class="text-gray-700 text-sm text-center mb-3">Popular Categories</p>
+      <div class="flex justify-center">
+        <span
+          class="bg-gray-100 text-gray-500 rounded-full px-3 py-1 text-xs mr-2"
+          >Chinese</span
+        >
+        <span
+          class="bg-gray-100 text-gray-500 rounded-full px-3 py-1 text-xs mr-2"
+          >Italian</span
+        >
+        <span
+          class="bg-gray-100 text-gray-500 rounded-full px-3 py-1 text-xs mr-2"
+          >Thai</span
+        >
+        <span
+          class="bg-gray-100 text-gray-500 rounded-full px-3 py-1 text-xs mr-2"
+          >Indian</span
+        >
+      </div>
+    </div>
+  </div>
+</header>

@@ -5,7 +5,7 @@ export PGPASSWORD=changeme
 export PGDATABASE=gvdb
 
 # 1) Datenbankdump im Custom-Format (-Fc) -> ideal für pg_restore
-pg_dump --schema-only --schema=gv -h "$PGHOST" -p "$PGPORT" -U "$PGUSER" -d "$PGDATABASE" \
+pg_dump  --schema=gv -h "$PGHOST" -p "$PGPORT" -U "$PGUSER" -d "$PGDATABASE" \
   -Fc -f gvdb_$(date +%F).dump
 
 # (optional) Checksum zum Verifizieren

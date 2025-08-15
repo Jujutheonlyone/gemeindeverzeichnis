@@ -1,0 +1,352 @@
+<!--
+File: header.html
+Project: multipurpose-listing-and-directory-template
+File Created: Wednesday, 29th June 2022 7:37:29 pm
+Author: Naime Hossain & ui-lib -> https://ui-lib.com/ (support@ui-lib.com)
+-----
+Last Modified: Wednesday, 28th September 2022 11:48:14 am
+Modified By: Naime Hossain & ui-lib -> https://ui-lib.com/ (support@ui-lib.com>)
+-----
+Copyright 2019 - 2022 ui-lib  , ui-lib  ( https://ui-lib.com/ )
+-->
+
+<div
+  class="fixed lg:left-64 left-0 z-30 shadow-front-2 bg-white h-20 lg:w-[calc(100%-256px)] w-full px-7 py-4 flex flex-col justify-center dark:bg-foreground dark:text-gray-200 top-0"
+>
+  <div class="flex justify-between">
+    <div class="flex items-center">
+      <button type="button" class="mr-3 lg:hidden block dashboard-header-btn">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          class="h-5 w-5 text-blue-500"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke="currentColor"
+          stroke-width="2"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            d="M4 6h16M4 12h16M4 18h16"
+          />
+        </svg>
+      </button>
+      <ul class="lg:flex hidden items-center">
+        <li class="mr-9">
+          <a href="dashboard-home.html" class="hover:text-blue-500">Home</a>
+        </li>
+        <li class="mr-9">
+          <a href="#" class="hover:text-blue-500">Listing</a>
+        </li>
+        <li class="mr-9">
+          <div class="dropdown mr-5" data-dropdown>
+            <button
+              class="link hover:text-blue-500 flex items-center"
+              data-dropdown-button
+            >
+              Pages
+              <svg
+                class="w-3 h-auto ml-2"
+                width="10"
+                height="6"
+                viewBox="0 0 10 6"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M4.99982 6.00001C4.79513 6.00001 4.59034 5.92467 4.43435 5.774L0.434558 1.91686C0.122074 1.61552 0.122074 1.12735 0.434558 0.826011C0.747042 0.524671 1.25327 0.524671 1.56575 0.826011L4.99982 4.13893L8.43464 0.826613C8.74712 0.525274 9.25335 0.525274 9.56583 0.826613C9.87831 1.12795 9.87831 1.61612 9.56583 1.91746L5.56604 5.7746C5.4098 5.92527 5.20481 6.00001 4.99982 6.00001Z"
+                  fill="currentColor"
+                />
+              </svg>
+            </button>
+            <div
+              class="dropdown-menu whitespace-nowrap bg-white dark:bg-foreground dark:text-gray-300 text-gray-700"
+            >
+              <div>
+                <div class="dropdown-links">
+                  <a
+                    href="agent-profile.html"
+                    class="link hover:bg-blue-500 hover:text-white px-4 py-1"
+                    >Agent Profile</a
+                  >
+                  <a
+                    href="agent-list.html"
+                    class="link hover:bg-blue-500 hover:text-white px-4 py-1"
+                    >Agent List</a
+                  >
+                  <a
+                    href="blog-details-page.html"
+                    class="link hover:bg-blue-500 hover:text-white px-4 py-1"
+                    >Blog Details
+                  </a>
+                  <a
+                    href="blog-list-page.html"
+                    class="link hover:bg-blue-500 hover:text-white px-4 py-1"
+                    >Blog List
+                  </a>
+                  <a
+                    href="bookin-page.html"
+                    class="link hover:bg-blue-500 hover:text-white px-4 py-1"
+                    >Booking
+                  </a>
+                  <a
+                    href="contact-page.html"
+                    class="link hover:bg-blue-500 hover:text-white px-4 py-1"
+                    >Contact
+                  </a>
+                  <a
+                    href="apartment-details-page.html"
+                    class="link hover:bg-blue-500 hover:text-white px-4 py-1"
+                    >Apartment Details Page
+                  </a>
+                  <a
+                    href="event-listing-details-page.html"
+                    class="link hover:bg-blue-500 hover:text-white px-4 py-1"
+                    >event-listing-details-page
+                  </a>
+                  <a
+                    href="resturant-details-page.html"
+                    class="link hover:bg-blue-500 hover:text-white px-4 py-1"
+                    >resturant-details-page
+                  </a>
+                  <a
+                    href="listing-grid.html"
+                    class="link hover:bg-blue-500 hover:text-white px-4 py-1"
+                    >Listing Grid
+                  </a>
+                  <a
+                    href="listing-map-grid-view.html"
+                    class="link hover:bg-blue-500 hover:text-white px-4 py-1"
+                    >Listing Map Grid
+                  </a>
+                  <a
+                    href="pricing-page-1.html"
+                    class="link hover:bg-blue-500 hover:text-white px-4 py-1"
+                    >Pricing Page 1
+                  </a>
+                  <a
+                    href="pricing-page-2.html"
+                    class="link hover:bg-blue-500 hover:text-white px-4 py-1"
+                    >Pricing Page 2
+                  </a>
+                  <a
+                    href="listing-list.html"
+                    class="link hover:bg-blue-500 hover:text-white px-4 py-1"
+                    >Listing
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </li>
+      </ul>
+    </div>
+    <div class="flex items-center">
+      <div class="mr-9">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          class="h-5 w-5 text-gray-300 cursor-pointer darkMode"
+          viewBox="0 0 20 20"
+          fill="currentColor"
+        >
+          <path
+            d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"
+          />
+        </svg>
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          class="h-5 w-5 text-yellow-500 cursor-pointer lightMode hidden"
+          viewBox="0 0 20 20"
+          fill="currentColor"
+        >
+          <path
+            fill-rule="evenodd"
+            d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z"
+            clip-rule="evenodd"
+          />
+        </svg>
+      </div>
+      <div class="dropdown mr-3" data-dropdown>
+        <button
+          class="link hover:text-blue-500 flex items-center"
+          data-dropdown-button
+        >
+          <div class="relative lg:mr-3 mr-0">
+            <img
+              class="w-8 h-8 rounded-full border border-white"
+              src="img/faces/10.jpg"
+              data-dropdown-button
+              alt=""
+            />
+            <div
+              class="w-2 h-2 bg-green-500 rounded-full border absolute bottom-0 right-0"
+            ></div>
+          </div>
+          <span data-dropdown-button class="lg:block hidden">My Account</span>
+          <svg
+            class="w-3 h-auto ml-2"
+            width="10"
+            height="6"
+            data-dropdown-button
+            viewBox="0 0 10 6"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M4.99982 6.00001C4.79513 6.00001 4.59034 5.92467 4.43435 5.774L0.434558 1.91686C0.122074 1.61552 0.122074 1.12735 0.434558 0.826011C0.747042 0.524671 1.25327 0.524671 1.56575 0.826011L4.99982 4.13893L8.43464 0.826613C8.74712 0.525274 9.25335 0.525274 9.56583 0.826613C9.87831 1.12795 9.87831 1.61612 9.56583 1.91746L5.56604 5.7746C5.4098 5.92527 5.20481 6.00001 4.99982 6.00001Z"
+              fill="currentColor"
+            />
+          </svg>
+        </button>
+        <div
+          class="dropdown-menu bg-white dark:bg-foreground dark:text-gray-300 text-gray-700"
+        >
+          <div>
+            <div class="dropdown-links max-w-xs w-48 rounded-md py-3">
+              <a
+                href="listing-list.html"
+                class="link hover:text-blue-500 px-4 py-1 flex items-center text-sm text-gray-700 dark:text-gray-300"
+                ><svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  class="w-4 h-4 mr-2"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                  stroke-width="2"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"
+                  /></svg
+                >Account
+              </a>
+              <a
+                href="listing-list.html"
+                class="link hover:text-blue-500 px-4 py-1 flex items-center text-sm text-gray-700 dark:text-gray-300"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  class="h-4 w-4 mr-2"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                  stroke-width="2"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"
+                  />
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"
+                  />
+                </svg>
+                Order Tracking
+              </a>
+              <a
+                href="listing-list.html"
+                class="link hover:text-blue-500 px-4 py-1 flex items-center text-sm text-gray-700 dark:text-gray-300"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  class="h-4 w-4 mr-2"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                  stroke-width="2"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="M5 5a2 2 0 012-2h10a2 2 0 012 2v16l-7-3.5L5 21V5z"
+                  />
+                </svg>
+                My Voucher
+              </a>
+              <a
+                href="listing-list.html"
+                class="link hover:text-blue-500 px-4 py-1 flex items-center text-sm text-gray-700 dark:text-gray-300"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  class="h-4 w-4 mr-2"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                  stroke-width="2"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"
+                  />
+                </svg>
+                My Wishlist
+              </a>
+              <a
+                href="listing-list.html"
+                class="link hover:text-blue-500 px-4 py-1 flex items-center text-sm text-gray-700 dark:text-gray-300"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  class="w-4 h-4 mr-2"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                  stroke-width="2"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4"
+                  />
+                </svg>
+                Settings
+              </a>
+              <a
+                href="/sign-in.html"
+                class="link hover:text-blue-500 px-4 py-1 flex items-center text-sm text-gray-700 dark:text-gray-300"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  class="w-4 h-4 mr-2"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                  stroke-width="2"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"
+                  />
+                </svg>
+                Sign Out
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <button
+        type="button"
+        class="inline-flex items-center px-3 py-2 rounded-lg border border-gray-200 text-gray-700 dark:text-gray-300"
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          class="h-4 w-4 lg:mr-2 mr-0"
+          viewBox="0 0 20 20"
+          fill="currentColor"
+        >
+          <path
+            fill-rule="evenodd"
+            d="M10 3a1 1 0 011 1v5h5a1 1 0 110 2h-5v5a1 1 0 11-2 0v-5H4a1 1 0 110-2h5V4a1 1 0 011-1z"
+            clip-rule="evenodd"
+          /></svg
+        ><span class="lg:flex hidden">Add Listing</span>
+      </button>
+    </div>
+  </div>
+</div>

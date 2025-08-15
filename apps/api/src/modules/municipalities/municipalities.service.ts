@@ -19,12 +19,12 @@ export class MunicipalityService {
         regbez?: string;
         kreis?: string;
         gemeindeverband?: string;
-        gebietsstand?: string; // wenn gesetzt: exakt dieser Stichtag
+        gebietsstand?: string;
         page?: number;
         limit?: number;
     }) {
         const page = Math.max(1, params.page ?? 1);
-        const limit = Math.min(200, Math.max(1, params.limit ?? 25));
+        const limit = Math.min(10000, Math.max(1, params.limit ?? 25));
 
         const qb = this.repo.createQueryBuilder('m');
 

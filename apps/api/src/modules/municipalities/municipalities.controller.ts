@@ -1,31 +1,14 @@
 import {Controller, Get, Param, Query} from "@nestjs/common";
 import {MunicipalityService} from "./municipalities.service";
+import {MunicipalityListQueryDto} from "./municipality-list.query.dto";
 
 @Controller('v1/municipalities')
 export class MunicipalityController {
     constructor(private readonly svc: MunicipalityService) {}
 
     @Get()
-    list(
-        @Query('query') query?: string,
-        @Query('land') land?: string,
-        @Query('regbez') regbez?: string,
-        @Query('kreis') kreis?: string,
-        @Query('gemeindeverband') gemeindeverband?: string,
-        @Query('gebietsstand') gebietsstand?: string,
-        @Query('page') page?: string,
-        @Query('limit') limit?: string,
-    ) {
-        return this.svc.list({
-            query,
-            land,
-            regbez,
-            kreis,
-            gemeindeverband,
-            gebietsstand,
-            page: page ? parseInt(page, 10) : undefined,
-            limit: limit ? parseInt(limit, 10) : undefined,
-        });
+    list(@Query() q: MunicipalityListQueryDto) {
+        return this.svc.list(q);
     }
 
     @Get(':ars')

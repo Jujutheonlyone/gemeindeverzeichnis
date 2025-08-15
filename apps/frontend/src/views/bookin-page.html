@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+  <head>
+    <meta name="description" content="Landing Page" />
+    <meta name="keywords" content="HTML, CSS, JavaScript" />
+    <meta name="author" content="UI Lib" />
+    <!-- favicon start  -->
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="/img/favicon/apple-touch-icon.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="/img/favicon/favicon-32x32.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="/img/favicon/favicon-16x16.png"
+    />
+    <link rel="manifest" href="/img/favicon/site.webmanifest" />
+    <link
+      rel="mask-icon"
+      href="/img/favicon/safari-pinned-tab.svg"
+      color="#5bbad5"
+    />
+    <meta name="msapplication-TileColor" content="#da532c" />
+    <meta name="theme-color" content="#ffffff" />
+    <!-- favicon end  -->
+    @include('./Layouts/shared/head.html', { "title": "Booking Page" })
+  </head>
+
+  <body class="bg-[#F9FAFB]">
+    @include('./components/preloader.html')
+    @include('./Layouts/inner-header.html')
+    <!-- end wrapper -->
+    <div class="font-inter dark:bg-background sticky-header-first-content">
+      @include('./inner-pages/booking/booking-page.html')
+      @include('./components/scroll-top-btn.html')
+      @include('./Layouts/shared/footer.html')
+      @include('./Layouts/shared/script.html')
+    </div>
+  </body>
+</html>

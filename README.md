@@ -46,3 +46,7 @@ npm run dev
 - Mapping der 220-Stellen-Satzarten → Normalformen (state/district/municipality)
 - Idempotenter Import (SHA/ETag-Check, Duplicate Guard)
 - Tests
+
+juliansunten@Mac gemeindeverzeichnis % docker tag gemeindeverzeichnis-api:0.1.0 ghcr.io/jujutheonlyone/gemeindeverzeichnis-api:latest
+
+juliansunten@Mac gemeindeverzeichnis % docker push ghcr.io/jujutheonlyone/gemeindeverzeichnis-api:latest

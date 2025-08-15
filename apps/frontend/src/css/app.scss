@@ -1,0 +1,204 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@tailwind variants;
+
+html {
+  @apply overflow-x-hidden;
+  font-family: "Inter", sans-serif;
+}
+body {
+  @apply text-base text-gray-800;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  @apply tracking-wide;
+}
+p {
+  letter-spacing: 0.005em;
+}
+/* .dropdown start  */
+.dashboard-sidebar{
+.active {
+  @apply text-blue-500 ;
+  a {
+    @apply bg-gray-700;
+  }
+  
+}
+}
+
+.dropdown {
+  position: relative;
+}
+
+.dropdown-menu {
+  position: absolute;
+  left: 0;
+  top: calc(100% + 0.25rem);
+
+  border-radius: 0.25rem;
+  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.1);
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(-10px);
+  z-index: 999999;
+  transition: opacity 150ms ease-in-out, transform 150ms ease-in-out;
+}
+.dropdown-mobile-menu {
+  display: none;
+}
+.dropdown.active > .link + .dropdown-mobile-menu {
+  display: block;
+}
+.dropdown-mobile.active {
+  @apply text-blue-500 dark:text-blue-500;
+  button {
+    svg {
+      @apply rotate-180;
+    }
+  }
+}
+.dropdown.active > .link + .dropdown-menu {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+.dropdown-links {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+.accordion-active svg {
+  @apply rotate-180;
+}
+
+.custom-switch {
+  @apply relative cursor-pointer w-8 h-4 appearance-none bg-gray-200 rounded-full transition-all checked:bg-blue-200 before:absolute before:w-4 before:h-4 before:rounded-full before:top-0 before:left-0 before:bg-blue-500 before:transition-all before:scale-110 checked:before:left-4;
+}
+/* dropdown end  */
+.sticky-header {
+  // transition: all 1s ease-in;
+}
+
+.map-content {
+  transition: all 0.3s ease-in;
+  @media (max-width: "1023px") {
+    position: fixed !important;
+    top: 136px;
+    right: -100% !important;
+    &.open {
+      right: 0 !important;
+    }
+  }
+}
+.slideDown {
+  animation: mymove 0.2s forwards;
+}
+@keyframes mymove {
+  0% {
+    top: -20px;
+  }
+  50% {
+    top: -10px;
+  }
+
+  100% {
+    top: 0px;
+  }
+}
+
+.preload-disappear {
+  animation: vanish 1s forwards;
+}
+
+@keyframes vanish {
+  100% {
+    opacity: 0;
+    visibility: hidden;
+  }
+}
+.card-linear-gradient {
+  background: linear-gradient(
+    0deg,
+    rgba(0, 0, 0, 0.9) 0%,
+    rgba(255, 255, 255, 0) 99%
+  );
+}
+.swiper-center-zoom .swiper-slide {
+  transform: scale(0.9) !important;
+  &.swiper-slide-active {
+    transform: scale(1) !important;
+  }
+}
+// .dropdown.active > .link + .dropdown-menu {
+//   opacity: 1;
+//   transform: translateY(0);
+//   pointer-events: auto;
+// }
+
+.body-header {
+  .sticky-header-first-content {
+    padding-top: 80px;
+  }
+}
+
+// start::datatable
+.dataTable-top {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row-reverse;
+  // @apply px-0;
+}
+.dataTable-search {
+  flex: 1;
+}
+.dataTable-wrapper.no-footer .dataTable-container {
+  @apply border-b border-gray-200 dark:border-foreground;
+}
+select.dataTable-selector {
+  @apply px-4 py-2 mr-0 text-gray-500 dark:text-gray-400 border border-gray-200 dark:border-gray-800 rounded-lg dark:bg-foreground focus:outline-none;
+}
+input.dataTable-input {
+  @apply focus:outline-none sm:w-auto w-full sm:mb-0 mb-3 border border-gray-200 dark:border-foreground dark:bg-background dark:text-gray-100 shadow-input rounded-md px-4 py-2;
+}
+.dataTable-dropdown label {
+  @apply dark:text-gray-400;
+}
+.dataTable-table > thead > tr > th {
+  vertical-align: bottom;
+  text-align: left;
+  @apply border-b border-gray-200 dark:border-foreground;
+}
+#myTable .dataTable-sorter {
+  display: flex;
+}
+#myTable tr th:first-child {
+  width: 100% !important;
+}
+#myTable-no-search td,
+#myTable td {
+  vertical-align: middle;
+}
+
+.dataTable-pagination-list li a {
+  @apply rounded-full w-8 h-8 flex justify-center items-center border border-gray-200 dark:border-gray-800 text-gray-500 dark:text-gray-300 mr-2;
+}
+.dataTable-pagination-list li:hover a {
+  @apply bg-blue-50 text-blue-500;
+}
+.dataTable-pagination-list li.active:hover a {
+  @apply bg-blue-500 text-white;
+}
+.dataTable-pagination-list li.active a {
+  @apply bg-blue-500 text-white;
+}
+.dataTable-info {
+  @apply dark:text-gray-400;
+}
+// end::datatable

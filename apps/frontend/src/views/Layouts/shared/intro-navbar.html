@@ -1,0 +1,95 @@
+<!--
+File: intro-navbar.html
+Project: multipurpose-listing-and-directory-template
+File Created: Wednesday, 28th September 2022 3:38:01 pm
+Author: Naime Hossain & ui-lib -> https://ui-lib.com/ (support@ui-lib.com)
+-----
+Last Modified: Wednesday, 28th September 2022 5:47:05 pm
+Modified By: Naime Hossain & ui-lib -> https://ui-lib.com/ (support@ui-lib.com>)
+-----
+Copyright 2019 - 2022 ui-lib  , ui-lib  ( https://ui-lib.com/ )
+-->
+
+<div class="w-full navbar h-20 flex items-center sticky-header -top-20">
+  <nav
+    class="container mx-auto lg:px-0 px-5 flex items-center justify-between transition-all"
+  >
+    <button type="button" class="lg:hidden block menu-btn">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        class="h-6 w-6"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke="currentColor"
+        stroke-width="2"
+      >
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          d="M4 6h16M4 12h16M4 18h16"
+        />
+      </svg>
+    </button>
+    <a href="/" class="flex items-center">
+      <img class="w-11 h-11 mr-3" src="img/logo.svg" alt="" />
+      <h6 class="text-base font-medium">Accommo</h6>
+    </a>
+    <button
+      type="button"
+      class="text-white hover:text-blue-500 flex items-center lg:hidden"
+    >
+      <span class="lg:mr-3 mr-0 relative">
+        <img
+          class="w-8 h-8 rounded-full border border-white"
+          src="img/faces/10.jpg"
+          alt=""
+        />
+        <span
+          class="w-2 h-2 bg-green-500 rounded-full border absolute bottom-0 right-0"
+        ></span>
+      </span>
+    </button>
+    <div class="hidden lg:flex items-center">
+      <ul class="flex items-center">
+        <li class="list-none">
+          @include("../../components/dropdown-components/home-menu.html")
+        </li>
+        <li class="list-none">
+          @include("../../components/dropdown-components/mega-menu.html")
+        </li>
+        <li class="list-none">
+          @include("../../components/dropdown-components/dashboard.html")
+        </li>
+        <li class="list-none">
+          <a
+            class="link hover:text-blue-500 flex items-center pr-9"
+            href="https://accomu-doc.netlify.app/"
+            target="_blank"
+            rel="noopener noreferrer"
+            >Documentation</a
+          >
+        </li>
+      </ul>
+      <a
+        href=""
+        target="_blank"
+        type="button"
+        class="inline-flex items-center px-3 py-2 rounded-lg border border-blue-500 text-blue-500 hover:bg-blue-500 hover:text-white"
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          class="h-4 w-4 xl:mr-2 mr-0"
+          viewBox="0 0 20 20"
+          fill="currentColor"
+        >
+          <path
+            fill-rule="evenodd"
+            d="M10 3a1 1 0 011 1v5h5a1 1 0 110 2h-5v5a1 1 0 11-2 0v-5H4a1 1 0 110-2h5V4a1 1 0 011-1z"
+            clip-rule="evenodd"
+          />
+        </svg>
+        <span class="xl:block hidden">Get Now</span>
+      </a>
+    </div>
+  </nav>
+</div>
