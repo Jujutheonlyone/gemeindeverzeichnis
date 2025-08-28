@@ -111,36 +111,43 @@ jobs:
         run: echo "IMAGE_REF=${{ env.IMAGE_FRONTEND }}:${{ steps.sha.outputs.SHORT_SHA }}" >> $GITHUB_OUTPUT
 
   deploy:
-    name: Deploy to Kubernetes
     needs: [ build-api, build-frontend ]
     runs-on: ubuntu-latest
     if: github.ref == 'refs/heads/main'
     steps:
-      - name: Checkout (for manifests)
-        uses: actions/checkout@v4
+      - uses: actions/checkout@v4
 
-      - name: Install kubectl
-        uses: azure/setup-kubectl@v4
+      - uses: azure/setup-kubectl@v4
         with:
           version: 'v1.29.0'
 
       - name: Configure kubeconfig
         run: |
-          mkdir -p ~/.kube
-          echo "${KUBE_CONFIG}" > ~/.kube/config
+          install -d -m 700 ~/.kube
+          printf "%s" "${KUBE_CONFIG}" > ~/.kube/config
+          chmod 600 ~/.kube/config
         env:
           KUBE_CONFIG: ${{ secrets.KUBE_CONFIG }}
 
-      - name: Apply manifests
+      # Optional: Helm-Installs hier einfügen (siehe oben)
+
+      - name: Apply manifests (skip values & kubeconfig files)
+        env:
+          K8S_MANIFEST_DIR: infrastructure
+          K8S_NAMESPACE: gv
         run: |
-          kubectl apply -f ${{ env.K8S_MANIFEST_DIR }} -n ${{ env.K8S_NAMESPACE }}
+          set -euo pipefail
+          find "${K8S_MANIFEST_DIR}" -type f -name '*.y*ml' \
+            ! -name '*values.yaml' \
+            ! -name 'kubeconfig*.y*ml' \
+            -print0 | xargs -0 -n1 kubectl apply -n "${K8S_NAMESPACE}" -f
 
       - name: Set image for API
         run: |
-          kubectl set image deployment/gemeindeverzeichnis-api api=${{ needs.build-api.outputs.IMAGE_REF }} -n ${{ env.K8S_NAMESPACE }} --record
-          kubectl rollout status deployment/gemeindeverzeichnis-api -n ${{ env.K8S_NAMESPACE }}
+          kubectl set image deployment/gemeindeverzeichnis-api api=${{ needs.build-api.outputs.IMAGE_REF }} -n gv --record
+          kubectl rollout status deployment/gemeindeverzeichnis-api -n gv
 
       - name: Set image for Frontend
         run: |
-          kubectl set image deployment/gemeindeverzeichnis-frontend web=${{ needs.build-frontend.outputs.IMAGE_REF }} -n ${{ env.K8S_NAMESPACE }} --record
-          kubectl rollout status deployment/gemeindeverzeichnis-frontend -n ${{ env.K8S_NAMESPACE }}
+          kubectl set image deployment/gemeindeverzeichnis-frontend web=${{ needs.build-frontend.outputs.IMAGE_REF }} -n gv --record
+          kubectl rollout status deployment/gemeindeverzeichnis-frontend -n gv
