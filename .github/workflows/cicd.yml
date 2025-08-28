@@ -1,0 +1,146 @@
+name: Build, Push & Deploy (api + frontend)
+
+on:
+  push:
+    branches: [ main ]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  packages: write
+
+env:
+  REGISTRY: ghcr.io
+  # Wir pushen in zwei getrennte Repos unter deinem Owner:
+  IMAGE_API: ghcr.io/${{ github.repository_owner }}/gemeindeverzeichnis-api
+  IMAGE_FRONTEND: ghcr.io/${{ github.repository_owner }}/gemeindeverzeichnis-frontend
+  K8S_NAMESPACE: gv
+  K8S_MANIFEST_DIR: infrastructure
+
+jobs:
+  build-api:
+    runs-on: ubuntu-latest
+    outputs:
+      IMAGE_REF: ${{ steps.out.outputs.IMAGE_REF }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Login GHCR
+        uses: docker/login-action@v3
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Calc short SHA
+        id: sha
+        run: echo "SHORT_SHA=${GITHUB_SHA::7}" >> $GITHUB_OUTPUT
+
+      - name: Docker metadata (api)
+        id: meta
+        uses: docker/metadata-action@v5
+        with:
+          images: ${{ env.IMAGE_API }}
+          tags: |
+            type=raw,value=latest
+            type=raw,value=${{ steps.sha.outputs.SHORT_SHA }}
+
+      - name: Set up Buildx
+        uses: docker/setup-buildx-action@v3
+
+      - name: Build & push API
+        uses: docker/build-push-action@v6
+        with:
+          context: ./apps/api
+          file: ./apps/api/Dockerfile
+          push: true
+          tags: ${{ steps.meta.outputs.tags }}
+          labels: ${{ steps.meta.outputs.labels }}
+          cache-from: type=gha
+          cache-to: type=gha,mode=max
+
+      - name: Output image ref
+        id: out
+        run: echo "IMAGE_REF=${{ env.IMAGE_API }}:${{ steps.sha.outputs.SHORT_SHA }}" >> $GITHUB_OUTPUT
+
+  build-frontend:
+    runs-on: ubuntu-latest
+    outputs:
+      IMAGE_REF: ${{ steps.out.outputs.IMAGE_REF }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Login GHCR
+        uses: docker/login-action@v3
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Calc short SHA
+        id: sha
+        run: echo "SHORT_SHA=${GITHUB_SHA::7}" >> $GITHUB_OUTPUT
+
+      - name: Docker metadata (frontend)
+        id: meta
+        uses: docker/metadata-action@v5
+        with:
+          images: ${{ env.IMAGE_FRONTEND }}
+          tags: |
+            type=raw,value=latest
+            type=raw,value=${{ steps.sha.outputs.SHORT_SHA }}
+
+      - name: Set up Buildx
+        uses: docker/setup-buildx-action@v3
+
+      - name: Build & push Frontend
+        uses: docker/build-push-action@v6
+        with:
+          context: ./apps/frontend
+          file: ./apps/frontend/Dockerfile
+          push: true
+          tags: ${{ steps.meta.outputs.tags }}
+          labels: ${{ steps.meta.outputs.labels }}
+          cache-from: type=gha
+          cache-to: type=gha,mode=max
+
+      - name: Output image ref
+        id: out
+        run: echo "IMAGE_REF=${{ env.IMAGE_FRONTEND }}:${{ steps.sha.outputs.SHORT_SHA }}" >> $GITHUB_OUTPUT
+
+  deploy:
+    name: Deploy to Kubernetes
+    needs: [ build-api, build-frontend ]
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/main'
+    steps:
+      - name: Checkout (for manifests)
+        uses: actions/checkout@v4
+
+      - name: Install kubectl
+        uses: azure/setup-kubectl@v4
+        with:
+          version: 'v1.29.0'
+
+      - name: Configure kubeconfig
+        run: |
+          mkdir -p ~/.kube
+          echo "${KUBE_CONFIG}" > ~/.kube/config
+        env:
+          KUBE_CONFIG: ${{ secrets.KUBE_CONFIG }}
+
+      - name: Apply manifests
+        run: |
+          kubectl apply -f ${{ env.K8S_MANIFEST_DIR }} -n ${{ env.K8S_NAMESPACE }}
+
+      - name: Set image for API
+        run: |
+          kubectl set image deployment/gemeindeverzeichnis-api api=${{ needs.build-api.outputs.IMAGE_REF }} -n ${{ env.K8S_NAMESPACE }} --record
+          kubectl rollout status deployment/gemeindeverzeichnis-api -n ${{ env.K8S_NAMESPACE }}
+
+      - name: Set image for Frontend
+        run: |
+          kubectl set image deployment/gemeindeverzeichnis-frontend web=${{ needs.build-frontend.outputs.IMAGE_REF }} -n ${{ env.K8S_NAMESPACE }} --record
+          kubectl rollout status deployment/gemeindeverzeichnis-frontend -n ${{ env.K8S_NAMESPACE }}
