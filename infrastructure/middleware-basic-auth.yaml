@@ -1,0 +1,10 @@
+apiVersion: traefik.io/v1alpha1
+kind: Middleware
+metadata:
+  name: basic-auth
+  namespace: gv
+spec:
+  basicAuth:
+    secret: gv-basic-auth
+    realm: "Restricted"
+    removeHeader: true

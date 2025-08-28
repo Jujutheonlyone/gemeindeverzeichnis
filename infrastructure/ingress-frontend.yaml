@@ -5,6 +5,7 @@ metadata:
   namespace: gv
   annotations:
     traefik.ingress.kubernetes.io/router.tls.certresolver: letsencrypt
+    traefik.ingress.kubernetes.io/router.middlewares: gv-basic-auth@kubernetescrd,gv-sec-headers@kubernetescrd
 spec:
   ingressClassName: traefik
   rules:
