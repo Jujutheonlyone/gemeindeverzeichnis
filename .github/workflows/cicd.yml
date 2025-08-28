@@ -169,3 +169,15 @@ jobs:
           set -euo pipefail
           kubectl set image deployment/gemeindeverzeichnis-frontend web=${{ needs.build-frontend.outputs.IMAGE_REF }} -n ${{ env.K8S_NAMESPACE }}
           kubectl rollout status deployment/gemeindeverzeichnis-frontend -n ${{ env.K8S_NAMESPACE }} --timeout=180s
+
+      - name: Trigger gv-100-importer once (now)
+        run: |
+          set -euo pipefail
+          ts=$(date +%s)
+          kubectl -n ${{ env.K8S_NAMESPACE }} create job gv-100-importer-now-${ts} --from=cronjob/gv-100-importer
+
+      - name: Trigger paddle-importer once (now)
+        run: |
+          set -euo pipefail
+          ts=$(date +%s)
+          kubectl -n ${{ env.K8S_NAMESPACE }} create job paddle-importer-now-${ts} --from=cronjob/paddle-importer

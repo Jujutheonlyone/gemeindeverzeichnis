@@ -1,0 +1,41 @@
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: paddle-importer
+  namespace: gv
+spec:
+  schedule: "0 2 * * *"
+  timeZone: "Europe/Berlin"
+  concurrencyPolicy: Forbid
+  successfulJobsHistoryLimit: 2
+  failedJobsHistoryLimit: 2
+  jobTemplate:
+    spec:
+      ttlSecondsAfterFinished: 86400
+      backoffLimit: 2
+      template:
+        spec:
+          restartPolicy: OnFailure
+          imagePullSecrets:
+            - name: ghcr-creds
+          containers:
+            - name: paddle-importer
+              image: ghcr.io/jujutheonlyone/paddle-importer:latest
+              imagePullPolicy: Always
+              env:
+                - name: DB_HOST
+                  value: postgres-postgresql
+                - name: DB_PORT
+                  value: "5432"
+                - name: DB_USER
+                  value: gvuser
+                - name: DB_PASSWORD
+                  valueFrom:
+                    secretKeyRef:
+                      name: db-secret
+                      key: password
+                - name: DB_NAME
+                  value: gvdb
+              # resources:
+              #   requests: { cpu: "100m", memory: "128Mi" }
+              #   limits:   { cpu: "500m", memory: "512Mi" }
