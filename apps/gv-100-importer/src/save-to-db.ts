@@ -1,19 +1,6 @@
-import { DataSource } from 'typeorm';
-import type { GvRecord } from './types';
+import type {GvRecord} from './types';
+import {AppDataSource} from "./datasource";
 
-/**
- * Single DataSource factory (no Entities, we use raw SQL for speed & control)
- */
-export function createDS() {
-    return new DataSource({
-        type: 'postgres',
-        host: process.env.DB_HOST || 'localhost',
-        port: parseInt(process.env.DB_PORT || '5432', 10),
-        username: process.env.DB_USER || 'gvuser',
-        password: process.env.DB_PASSWORD || 'changeme',
-        database: process.env.DB_NAME || 'gvdb',
-    });
-}
 
 /**
  * Robust date normalizer: accepts ISO string or {jahr/monat/tag} and returns
@@ -58,7 +45,7 @@ function inRange(n: number, min: number, max: number) {
 export async function saveStagingJson(records: GvRecord[], batchSize = 1000) {
     if (!records.length) return;
 
-    const ds = createDS();
+    const ds = AppDataSource;
     await ds.initialize();
     const qr = ds.createQueryRunner();
     await qr.connect();
@@ -101,7 +88,7 @@ export async function saveStagingJson(records: GvRecord[], batchSize = 1000) {
  * Uses a robust state seeding so foreign keys never fail if 10er-Sätze fehlen.
  */
 export async function normalizeFromStaging() {
-    const ds = createDS();
+    const ds = AppDataSource;
     await ds.initialize();
     const qr = ds.createQueryRunner();
     await qr.connect();
@@ -177,7 +164,7 @@ export async function saveMunicipalities(records: GvRecord[], batchSize = 1000) 
     const rows = records.filter(r => r.satzart === '60');
     if (!rows.length) return;
 
-    const ds = createDS();
+    const ds = AppDataSource;
     await ds.initialize();
     const qr = ds.createQueryRunner();
     await qr.connect();

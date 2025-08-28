@@ -1,4 +1,12 @@
-import {Column, Entity, PrimaryColumn} from "typeorm";
+import {
+    Column,
+    CreateDateColumn,
+    Entity,
+    Index,
+    PrimaryColumn,
+    PrimaryGeneratedColumn,
+    UpdateDateColumn
+} from "typeorm";
 
 @Entity({ schema: 'gv', name: 'municipality' })
 export class Municipality {
@@ -148,4 +156,48 @@ export class StagingJson {
 
     @Column({ type: 'timestamptz', name: 'ingested_at', nullable: true })
     ingestedAt?: string | null;
+}
+
+@Index('idx_paddle_courts_zip', ['zip'])
+@Index('idx_paddle_courts_name', ['name'])
+@Entity({ schema: 'gv', name: 'paddle_courts' })
+export class PadleCourt {
+    @PrimaryGeneratedColumn({ type: 'integer', name: 'id' })
+    id!: number;
+
+    @Column({ type: 'text', name: 'website', unique: true })
+    website!: string;
+
+    @Column({ type: 'text', name: 'phone', nullable: true })
+    phone!: string | null;
+
+    @Column({ type: 'text', name: 'email', nullable: true })
+    email!: string | null;
+
+    @Column({ type: 'text', name: 'street', nullable: true })
+    street!: string | null;
+
+    @Column({ type: 'text', name: 'zip', nullable: true })
+    zip!: string | null;
+
+    @Column({ type: 'text', name: 'name' })
+    name!: string;
+
+    @Column({ type: 'int', name: 'indoor_courts_count', default: () => '0' })
+    indoorCourtsCount!: number;
+
+    @Column({ type: 'int', name: 'outdoor_courts_count', default: () => '0' })
+    outdoorCourtsCount!: number;
+
+    @Column({ type: 'int', name: 'single_courts_count', default: () => '0' })
+    singleCourtsCount!: number;
+
+    @Column({ type: 'text', name: 'description', nullable: true })
+    description!: string | null;
+
+    @UpdateDateColumn({ type: 'timestamptz', name: 'updated_at', default: () => 'NOW()' })
+    updatedAt!: Date;
+
+    @CreateDateColumn({ type: 'timestamptz', name: 'created_at', default: () => 'NOW()' })
+    createdAt!: Date;
 }
