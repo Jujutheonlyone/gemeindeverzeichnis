@@ -10,10 +10,6 @@ permissions:
   packages: write
 
 env:
-  REGISTRY: ghcr.io
-  # Wir pushen in zwei getrennte Repos unter deinem Owner:
-  IMAGE_API: ghcr.io/${{ github.repository_owner }}/gemeindeverzeichnis-api
-  IMAGE_FRONTEND: ghcr.io/${{ github.repository_owner }}/gemeindeverzeichnis-frontend
   K8S_NAMESPACE: gv
   K8S_MANIFEST_DIR: infrastructure
 
@@ -26,7 +22,12 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Login GHCR
+      # ensure we always use a lowercase owner for GHCR image paths
+      - name: Owner (lowercase)
+        id: owner
+        run: echo "OWNER_LC=${GITHUB_REPOSITORY_OWNER,,}" >> $GITHUB_OUTPUT
+
+      - name: Log in to GHCR
         uses: docker/login-action@v3
         with:
           registry: ghcr.io
@@ -41,7 +42,7 @@ jobs:
         id: meta
         uses: docker/metadata-action@v5
         with:
-          images: ${{ env.IMAGE_API }}
+          images: ghcr.io/${{ steps.owner.outputs.OWNER_LC }}/gemeindeverzeichnis-api
           tags: |
             type=raw,value=latest
             type=raw,value=${{ steps.sha.outputs.SHORT_SHA }}
@@ -60,9 +61,9 @@ jobs:
           cache-from: type=gha
           cache-to: type=gha,mode=max
 
-      - name: Output image ref
+      - name: Output image ref (api)
         id: out
-        run: echo "IMAGE_REF=${{ env.IMAGE_API }}:${{ steps.sha.outputs.SHORT_SHA }}" >> $GITHUB_OUTPUT
+        run: echo "IMAGE_REF=ghcr.io/${{ steps.owner.outputs.OWNER_LC }}/gemeindeverzeichnis-api:${{ steps.sha.outputs.SHORT_SHA }}" >> $GITHUB_OUTPUT
 
   build-frontend:
     runs-on: ubuntu-latest
@@ -72,7 +73,11 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Login GHCR
+      - name: Owner (lowercase)
+        id: owner
+        run: echo "OWNER_LC=${GITHUB_REPOSITORY_OWNER,,}" >> $GITHUB_OUTPUT
+
+      - name: Log in to GHCR
         uses: docker/login-action@v3
         with:
           registry: ghcr.io
@@ -87,7 +92,7 @@ jobs:
         id: meta
         uses: docker/metadata-action@v5
         with:
-          images: ${{ env.IMAGE_FRONTEND }}
+          images: ghcr.io/${{ steps.owner.outputs.OWNER_LC }}/gemeindeverzeichnis-frontend
           tags: |
             type=raw,value=latest
             type=raw,value=${{ steps.sha.outputs.SHORT_SHA }}
@@ -106,35 +111,46 @@ jobs:
           cache-from: type=gha
           cache-to: type=gha,mode=max
 
-      - name: Output image ref
+      - name: Output image ref (frontend)
         id: out
-        run: echo "IMAGE_REF=${{ env.IMAGE_FRONTEND }}:${{ steps.sha.outputs.SHORT_SHA }}" >> $GITHUB_OUTPUT
+        run: echo "IMAGE_REF=ghcr.io/${{ steps.owner.outputs.OWNER_LC }}/gemeindeverzeichnis-frontend:${{ steps.sha.outputs.SHORT_SHA }}" >> $GITHUB_OUTPUT
 
   deploy:
+    name: Deploy to Kubernetes
     needs: [ build-api, build-frontend ]
     runs-on: ubuntu-latest
     if: github.ref == 'refs/heads/main'
     steps:
-      - uses: actions/checkout@v4
+      - name: Checkout (for manifests)
+        uses: actions/checkout@v4
 
-      - uses: azure/setup-kubectl@v4
+      - name: Install kubectl
+        uses: azure/setup-kubectl@v4
         with:
           version: 'v1.29.0'
 
       - name: Configure kubeconfig
         run: |
+          set -euo pipefail
           install -d -m 700 ~/.kube
           printf "%s" "${KUBE_CONFIG}" > ~/.kube/config
           chmod 600 ~/.kube/config
         env:
           KUBE_CONFIG: ${{ secrets.KUBE_CONFIG }}
 
-      # Optional: Helm-Installs hier einfügen (siehe oben)
+      # Optional: Helm installs for charts if you use your *values.yaml*
+      # - name: Helm install/upgrade (Traefik / Postgres)
+      #   run: |
+      #     helm repo add traefik https://traefik.github.io/charts
+      #     helm repo add bitnami https://charts.bitnami.com/bitnami
+      #     helm repo update
+      #     helm upgrade --install traefik traefik/traefik -n "${K8S_NAMESPACE}" -f "${K8S_MANIFEST_DIR}/traefik-values.yaml" --create-namespace
+      #     helm upgrade --install postgres bitnami/postgresql -n "${K8S_NAMESPACE}" -f "${K8S_MANIFEST_DIR}/pg-values.yaml"
 
       - name: Apply manifests (skip values & kubeconfig files)
         env:
-          K8S_MANIFEST_DIR: infrastructure
-          K8S_NAMESPACE: gv
+          K8S_NAMESPACE: ${{ env.K8S_NAMESPACE }}
+          K8S_MANIFEST_DIR: ${{ env.K8S_MANIFEST_DIR }}
         run: |
           set -euo pipefail
           find "${K8S_MANIFEST_DIR}" -type f -name '*.y*ml' \
@@ -142,12 +158,14 @@ jobs:
             ! -name 'kubeconfig*.y*ml' \
             -print0 | xargs -0 -n1 kubectl apply -n "${K8S_NAMESPACE}" -f
 
-      - name: Set image for API
+      - name: Set image for API (with timeout)
         run: |
-          kubectl set image deployment/gemeindeverzeichnis-api api=${{ needs.build-api.outputs.IMAGE_REF }} -n gv --record
-          kubectl rollout status deployment/gemeindeverzeichnis-api -n gv
+          set -euo pipefail
+          kubectl set image deployment/gemeindeverzeichnis-api api=${{ needs.build-api.outputs.IMAGE_REF }} -n ${{ env.K8S_NAMESPACE }}
+          kubectl rollout status deployment/gemeindeverzeichnis-api -n ${{ env.K8S_NAMESPACE }} --timeout=180s
 
-      - name: Set image for Frontend
+      - name: Set image for Frontend (with timeout)
         run: |
-          kubectl set image deployment/gemeindeverzeichnis-frontend web=${{ needs.build-frontend.outputs.IMAGE_REF }} -n gv --record
-          kubectl rollout status deployment/gemeindeverzeichnis-frontend -n gv
+          set -euo pipefail
+          kubectl set image deployment/gemeindeverzeichnis-frontend web=${{ needs.build-frontend.outputs.IMAGE_REF }} -n ${{ env.K8S_NAMESPACE }}
+          kubectl rollout status deployment/gemeindeverzeichnis-frontend -n ${{ env.K8S_NAMESPACE }} --timeout=180s
