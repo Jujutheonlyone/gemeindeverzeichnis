@@ -40,7 +40,7 @@ export class MunicipalityService {
         qb.orderBy('m.name', 'ASC').skip((page - 1) * limit).take(limit);
 
         const [items, total] = await qb.getManyAndCount();
-        return { page, limit, total, items };
+        return { page, limit, total, items, version: 'v1' };
     }
 
     async getByArs(ars: string) {
