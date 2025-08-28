@@ -1,0 +1,12 @@
+auth:
+  username: gvuser
+  database: gvdb
+  existingSecret: db-secret
+primary:
+  persistence:
+    enabled: true
+    size: 20Gi
+  resources:
+    requests:
+      cpu: 100m
+      memory: 256Mi

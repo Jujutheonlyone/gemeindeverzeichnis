@@ -1,0 +1,14 @@
+# api-rate-limit-ip.yaml
+apiVersion: traefik.io/v1alpha1
+kind: Middleware
+metadata:
+  name: api-rate-limit-ip
+  namespace: gv
+spec:
+  rateLimit:
+    average: 200
+    burst: 400
+    sourceCriterion:
+      ipStrategy:
+        depth: 0
+

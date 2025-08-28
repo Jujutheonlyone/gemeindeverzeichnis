@@ -1,0 +1,57 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: gv-db-restore
+  namespace: gv
+spec:
+  template:
+    spec:
+      restartPolicy: Never
+      volumes:
+        - name: dump
+          emptyDir: {}
+      initContainers:
+        - name: fetch-dump
+          image: google/cloud-sdk:slim
+          volumeMounts:
+            - name: dump
+              mountPath: /work
+          env:
+            - name: GCS_URI
+              value: gs://gv-dumps/gvdb_2025-08-13.dump
+          command: ["/bin/sh","-c"]
+          args:
+            - gsutil cp "$GCS_URI" /work/dump.dump
+      containers:
+        - name: restore
+          image: postgres:16
+          volumeMounts:
+            - name: dump
+              mountPath: /work
+          env:
+            - name: PGHOST
+              value: pg-postgresql
+            - name: PGPORT
+              value: "5432"
+            - name: PGUSER
+              valueFrom:
+                secretKeyRef:
+                  name: db-secret
+                  key: postgres-user
+            - name: PGPASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: db-secret
+                  key: postgres-password
+            - name: PGDATABASE
+              valueFrom:
+                secretKeyRef:
+                  name: db-secret
+                  key: postgres-db
+          command: ["/bin/sh","-c"]
+          args:
+            - >
+              echo "Restoring to $PGDATABASE on $PGHOST:$PGPORT as $PGUSER";
+              pg_restore -h $PGHOST -p $PGPORT -U $PGUSER -d $PGDATABASE -Fc -O -x /work/dump.dump
+  backoffLimit: 0
+

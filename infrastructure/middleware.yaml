@@ -1,0 +1,15 @@
+# middleware.yaml
+apiVersion: traefik.containo.us/v1alpha1
+kind: Middleware
+metadata:
+  name: sec-headers
+  namespace: gv
+spec:
+  headers:
+    stsSeconds: 31536000
+    stsIncludeSubdomains: true
+    stsPreload: true
+    contentTypeNosniff: true
+    browserXssFilter: true
+    referrerPolicy: "no-referrer-when-downgrade"
+    customFrameOptionsValue: "SAMEORIGIN"

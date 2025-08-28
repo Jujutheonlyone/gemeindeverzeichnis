@@ -1,0 +1,31 @@
+# ingress-api-public.yaml  (KEIN RateLimit; höhere Priority)
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: gemeindeverzeichnis-api-public
+  namespace: gv
+  annotations:
+    traefik.ingress.kubernetes.io/router.tls.certresolver: letsencrypt
+    traefik.ingress.kubernetes.io/router.priority: "1000"
+spec:
+  ingressClassName: traefik
+  rules:
+  - host: app.gemeindeverzeichnis.de
+    http:
+      paths:
+      - path: /docs
+        pathType: Prefix
+        backend:
+          service:
+            name: gemeindeverzeichnis-api
+            port:
+              number: 80
+      - path: /health
+        pathType: Prefix
+        backend:
+          service:
+            name: gemeindeverzeichnis-api
+            port:
+              number: 80
+  tls:
+  - hosts: [app.gemeindeverzeichnis.de]
