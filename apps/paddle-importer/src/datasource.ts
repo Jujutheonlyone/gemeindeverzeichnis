@@ -10,6 +10,8 @@ export const AppDataSource = new DataSource({
     database: process.env.DB_NAME || 'gvdb',
     entities: [],
     synchronize: false,
+    migrations: [__dirname + '/migrations/*.{js,ts}'],
+
 });
 
 export async function closeDataSource(){
