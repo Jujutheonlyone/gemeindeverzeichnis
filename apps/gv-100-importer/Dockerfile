@@ -9,11 +9,18 @@ RUN npm run build
 # ---- runtime ----
 FROM node:20-alpine
 ENV NODE_ENV=production TZ=Europe/Berlin
-WORKDIR /app
-# optional: timezone data (only if you need correct local time handling)
+# wir arbeiten im Home des node-Users
+WORKDIR /home/node/app
 RUN apk add --no-cache tzdata
-COPY package*.json ./
+
+# Alles dem node-User geben
+COPY --chown=node:node package*.json ./
 RUN npm ci --omit=dev && npm cache clean --force
-COPY --from=builder /app/dist ./dist
+
+COPY --chown=node:node --from=builder /app/dist ./dist
+
+# tmp-Ordner anlegen (gehört node)
+RUN mkdir -p .tmp && chown -R node:node /home/node/app
+
 USER node
 CMD ["node","dist/index.js"]
