@@ -36,6 +36,12 @@ spec:
                       key: password
                 - name: DB_NAME
                   value: gvdb
-              # resources:
-              #   requests: { cpu: "100m", memory: "128Mi" }
-              #   limits:   { cpu: "500m", memory: "512Mi" }
+              command: ["/bin/sh","-lc"]
+              args:
+                - |
+                  set -e
+                  echo "Running migrations..."
+                  npm run migrate
+                  echo "Starting importer..."
+                  node dist/index.js
+
